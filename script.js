@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // 0. Video Preloader Logic
+    const preloader = document.getElementById('video-preloader');
+    const introVideo = document.getElementById('intro-video');
+    const skipBtn = document.getElementById('skip-intro');
+
+    if (preloader && introVideo) {
+        // Hide when video ends
+        introVideo.addEventListener('ended', () => {
+            preloader.classList.add('hidden');
+        });
+
+        // Hide when skip button is clicked
+        if (skipBtn) {
+            skipBtn.addEventListener('click', () => {
+                preloader.classList.add('hidden');
+                introVideo.pause();
+            });
+        }
+
+        // Fallback: hide after 8 seconds just in case video fails to load/play
+        setTimeout(() => {
+            if (!preloader.classList.contains('hidden')) {
+                preloader.classList.add('hidden');
+            }
+        }, 8000);
+    }
+
     const navbar = document.getElementById('navbar');
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
@@ -12,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (scrollY / height) * 100;
 
-        // Sticky Navbar
-        if (scrollY > 50 || !isHomePage) {
+        // Sticky Navbar — always white, just add extra shadow on scroll
+        if (scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
@@ -83,23 +111,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Counter Animation
     const animateCounters = () => {
-        const counters = document.querySelectorAll('.stat-number');
+        const counters = document.querySelectorAll('.stat-number, .stat-number-dark');
         counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const speed = 200; // Lower is slower
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const speed = 100; // Animation steps
+            const isDecimal = target % 1 !== 0;
             
+            // Set initial state to 0 formatted correctly
+            counter.innerText = isDecimal ? "0.0" : "0";
+            
+            let count = 0;
             const updateCount = () => {
-                const count = +counter.innerText;
                 const inc = target / speed;
 
                 if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 1);
-                } else {
-                    counter.innerText = target;
-                    if (target >= 1000) {
-                        counter.innerText = (target / 1000).toFixed(0) + 'k';
+                    count += inc;
+                    if (count >= target) {
+                        counter.innerText = isDecimal ? target.toFixed(1) : (target >= 1000 ? (target / 1000).toFixed(0) + 'k' : target);
+                    } else {
+                        counter.innerText = isDecimal ? count.toFixed(1) : Math.ceil(count);
+                        setTimeout(updateCount, 15);
                     }
+                } else {
+                    counter.innerText = isDecimal ? target.toFixed(1) : (target >= 1000 ? (target / 1000).toFixed(0) + 'k' : target);
                 }
             };
             updateCount();
@@ -118,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('appear');
                 
                 // Trigger counter if it's the hero stats section
-                if (entry.target.classList.contains('hero-stats')) {
+                if (entry.target.classList.contains('hero-stats') || entry.target.classList.contains('hero-stats-dark')) {
                     animateCounters();
                 }
                 
@@ -129,25 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.animate-up, .animate-fade, .reveal-left, .reveal-right, .scale-up, .hero-stats');
+    const animatedElements = document.querySelectorAll('.animate-up, .animate-fade, .reveal-left, .reveal-right, .scale-up, .hero-stats, .hero-stats-dark');
     animatedElements.forEach(el => observer.observe(el));
 
-    // Robust Typing effect for Hero sub-headline
-    const heroP = document.querySelector('.hero-text p');
-    if (heroP) {
-        const text = heroP.textContent;
-        heroP.textContent = '';
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                heroP.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 30);
-            }
-        }
-        // Start typing after a short delay
-        setTimeout(type, 800);
-    }
+    // Typing effect removed as requested
+
 
     // 8. 3D Tilt Effect for Service Boxes
     const cards = document.querySelectorAll('.service-box');

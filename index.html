@@ -20,6 +20,13 @@
 </head>
 
 <body id="top">
+    <!-- Video Preloader Intro -->
+    <div id="video-preloader" class="video-preloader">
+        <video id="intro-video" src="assets/videomp_.mp4" autoplay muted playsinline></video>
+        <div class="skip-btn-wrap">
+            <button id="skip-intro" class="btn btn-primary">Skip Intro</button>
+        </div>
+    </div>
     <!-- Progress Bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
@@ -28,6 +35,10 @@
         <div class="container nav-container">
             <a href="#" class="logo">
                 <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo">
+                <div class="logo-text">
+                    <span class="logo-title">Srinivasa</span>
+                    <span class="logo-subtitle">Dental Clinic</span>
+                </div>
             </a>
             <div class="nav-links" id="nav-links">
                 <a href="#hero">Home</a>
@@ -50,37 +61,101 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="hero" class="hero-section">
-        <div class="bg-decor decor-1"><i class="fa-solid fa-tooth"></i></div>
-        <div class="bg-decor decor-2"><i class="fa-solid fa-teeth"></i></div>
-        <div class="container hero-content">
-            <div class="hero-text animate-up">
-                <span class="tagline">Premium Dental Care</span>
-                <h1>Advanced Care for Your <span class="highlight">Perfect Smile</span></h1>
-                <p>Experience world-class dental treatments at Srinivasa Dental Clinic. From digital implants to
-                    speciality cosmetic dentistry, we blend technology with compassion.</p>
-                <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-location-dot"></i> Visit Clinic</a>
-                    <a href="#services" class="btn btn-outline">Our Services</a>
+    <header id="hero" class="hero-section hero-fullscreen" style="background-image: url('assets/hero.png');">
+        <div class="hero-bg-overlay"></div>
+
+        <div class="container hero-content-fullscreen">
+            <!-- Center Text -->
+            <div class="hero-text-center animate-up">
+
+                <div style="margin-bottom: 20px;">
+                    <span class="tagline tagline-light"><i class="fa-solid fa-tooth"></i>&nbsp; Trusted Dental Care in
+                        Mysuru</span>
                 </div>
-                <div class="hero-stats">
+
+                <div class="hero-doctor-badge">
+                    <h3>Dr. P. Sheshadri</h3>
+                    <p>BDS, MDS • Periodontist &amp; Implantologist</p>
+                </div>
+
+                <h1 class="text-white">Your Smile Deserves the <span class="highlight-light">Best Care</span></h1>
+                <p class="hero-desc-light">Experience world-class dental treatments at Srinivasa Dental Clinic. From
+                    digital implants to speciality cosmetic dentistry-we blend technology with compassion.</p>
+
+                <div class="hero-btns justify-center">
+                    <a href="tel:+919448046136" class="btn btn-primary" id="hero-call-btn">
+                        <i class="fa-solid fa-phone"></i> Call Now
+                    </a>
+                    <a href="#services" class="btn btn-glass" id="hero-services-btn">
+                        Our Services <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="hero-stats stats-glass">
                     <div class="stat-item reveal-left delay-1">
-                        <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">Years Experience</span>
+                        <span class="stat-number" data-target="30" style="color:#fff;">0</span><span class="stat-plus"
+                            style="color:#60A5FA;">+</span>
+                        <span class="stat-label text-light">Years Experience</span>
                     </div>
+                    <div class="stat-divider bg-light-divider"></div>
                     <div class="stat-item reveal-left delay-2">
-                        <span class="stat-number" data-target="5000">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">Happy Patients</span>
+                        <span class="stat-number" data-target="10000" style="color:#fff;">0</span><span
+                            class="stat-plus" style="color:#60A5FA;">+</span>
+                        <span class="stat-label text-light">Patients Cured</span>
                     </div>
-                </div>
-            </div>
-            <div class="hero-image-wrapper animate-fade">
-                <div class="hero-image-card">
-                    <img src="assets/hero-bg.png" alt="Modern Dental Clinic" class="hero-img">
+                    <div class="stat-divider bg-light-divider"></div>
+                    <div class="stat-item reveal-left delay-3">
+                        <span class="stat-number" data-target="4.7" style="color:#fff;">0</span><span class="stat-plus"
+                            style="color:#FBBF24;">★</span>
+                        <span class="stat-label text-light">Google Rating</span>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
+
+
+    <!-- About Clinic Summary Section -->
+    <section class="section-padding" style="background-color: var(--bg-light);">
+        <div class="container home-about-grid">
+            <div class="reveal-left">
+                <img src="assets/hero-doctor.png" alt="Srinivasa Dental Clinic"
+                    style="width: 100%; height: auto; border-radius: 24px; box-shadow: var(--shadow-lg);">
+            </div>
+            <div class="reveal-right delay-1">
+                <span class="section-tag">About Our Clinic</span>
+                <h2 style="font-size: 2.4rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.2;">A Legacy
+                    of Dental Excellence in Mysuru</h2>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px; font-size: 1.05rem;">
+                    Srinivasa Dental Clinic is a premier speciality centre dedicated to providing advanced and
+                    compassionate dental care. Led by Dr. P. Sheshadri, our clinic blends state-of-the-art technology
+                    with over three decades of clinical expertise to give you the perfect smile.
+                </p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 35px;">
+                    <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 12px;"><i
+                            class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.3rem;"></i>
+                        <strong style="color: var(--text-dark); font-size: 1.05rem;">30+ Years of Expertise</strong>
+                    </li>
+                    <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 12px;"><i
+                            class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.3rem;"></i>
+                        <strong style="color: var(--text-dark); font-size: 1.05rem;">Advanced Digital
+                            Implantology</strong>
+                    </li>
+                    <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 12px;"><i
+                            class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.3rem;"></i>
+                        <strong style="color: var(--text-dark); font-size: 1.05rem;">100% Sterile &amp; Hygienic
+                            Environment</strong>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"
+                            style="color: var(--accent); font-size: 1.3rem;"></i> <strong
+                            style="color: var(--text-dark); font-size: 1.05rem;">Patient-Centric Approach</strong></li>
+                </ul>
+                <a href="about.html" class="btn btn-primary">Know More About Us <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section id="services" class="services-section section-padding">
@@ -151,7 +226,7 @@
     <section id="about" class="about-section section-padding">
         <div class="container about-container">
             <div class="about-image reveal-left">
-                <img src="assets/tech-bg.png" alt="Advanced Dental Technology">
+                <img src="assets/hero2.png" alt="Advanced Dental Technology">
                 <div class="experience-badge scale-up delay-2">
                     <span class="years">10+</span>
                     <span class="text">Years of Excellence</span>
