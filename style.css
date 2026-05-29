@@ -265,6 +265,7 @@ h2 {
     line-height: 1.1;
     font-family: 'Outfit', sans-serif;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .logo-subtitle {
@@ -1445,6 +1446,18 @@ h2 {
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
+    .logo img {
+        height: 52px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a:not(.btn) {
+        font-size: 0.95rem;
+    }
+
     .hero-text h1 {
         font-size: 2.8rem;
     }
@@ -1453,9 +1466,17 @@ h2 {
         padding: 50px;
         gap: 40px;
     }
+
+    .section-padding {
+        padding: 70px 0;
+    }
 }
 
 @media (max-width: 768px) {
+    .video-preloader {
+        display: none !important;
+    }
+
     .logo img {
         height: 50px;
     }
@@ -1521,12 +1542,19 @@ h2 {
 
     .hero-stats {
         width: 100%;
-        justify-content: space-around;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
         padding: 16px 10px;
     }
 
+    .stat-divider {
+        display: none;
+    }
+
     .stat-item {
-        padding: 0 12px;
+        padding: 0 8px;
+        text-align: center;
     }
 
     .section-padding {
@@ -1541,9 +1569,31 @@ h2 {
         font-size: 2.2rem;
     }
 
-    .hero-text p {
+    .hero-text p,
+    .hero-desc-light {
         margin: 0 auto 25px;
-        font-size: 1rem;
+        font-size: 0.98rem;
+        text-align: center !important;
+        line-height: 1.6;
+    }
+
+    .hero-doctor-badge {
+        padding: 10px 20px;
+        border-radius: 25px;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+    }
+
+    .hero-doctor-badge h3 {
+        font-size: 1.35rem !important;
+    }
+
+    .hero-doctor-badge p {
+        font-size: 0.85rem !important;
+        text-align: center !important;
+        margin-bottom: 0 !important;
     }
 
     .hero-btns {

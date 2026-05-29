@@ -6,25 +6,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const skipBtn = document.getElementById('skip-intro');
 
     if (preloader && introVideo) {
-        // Hide when video ends
-        introVideo.addEventListener('ended', () => {
+        if (window.innerWidth <= 768) {
             preloader.classList.add('hidden');
-        });
-
-        // Hide when skip button is clicked
-        if (skipBtn) {
-            skipBtn.addEventListener('click', () => {
+            introVideo.pause();
+        } else {
+            // Hide when video ends
+            introVideo.addEventListener('ended', () => {
                 preloader.classList.add('hidden');
-                introVideo.pause();
             });
-        }
 
-        // Fallback: hide after 8 seconds just in case video fails to load/play
-        setTimeout(() => {
-            if (!preloader.classList.contains('hidden')) {
-                preloader.classList.add('hidden');
+            // Hide when skip button is clicked
+            if (skipBtn) {
+                skipBtn.addEventListener('click', () => {
+                    preloader.classList.add('hidden');
+                    introVideo.pause();
+                });
             }
-        }, 8000);
+
+            // Fallback: hide after 8 seconds just in case video fails to load/play
+            setTimeout(() => {
+                if (!preloader.classList.contains('hidden')) {
+                    preloader.classList.add('hidden');
+                }
+            }, 8000);
+        }
     }
 
     const navbar = document.getElementById('navbar');
@@ -95,12 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
         if (savedTheme) {
             setTheme(savedTheme);
-        } else if (systemPrefersDark) {
-            setTheme('dark');
+        } else {
+            setTheme('light');
         }
 
         themeToggle.addEventListener('click', () => {
