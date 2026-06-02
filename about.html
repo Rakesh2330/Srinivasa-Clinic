@@ -646,6 +646,95 @@
                 height: 220px;
             }
         }
+
+        /* ── Doctor Switcher Styles ── */
+        .doctor-switcher-wrap {
+            background: #F8FAFC;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 90px;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="dark"] .doctor-switcher-wrap {
+            background: #0F172A;
+            border-color: #334155;
+        }
+
+        .doctor-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            max-width: 460px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 6px;
+            border-radius: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        [data-theme="dark"] .doctor-switcher {
+            background: #1E293B;
+            border-color: rgba(255,255,255,0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .switcher-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .switcher-btn i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .switcher-btn:hover {
+            color: var(--text-dark);
+        }
+
+        .switcher-btn.active {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .switcher-btn.active i {
+            transform: scale(1.1);
+        }
+
+        /* ── Profile Containers & Transitions ── */
+        .doctor-profile-block {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .doctor-profile-block.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .doctor-profile-vatsala {
+            display: none;
+        }
     </style>
 </head>
 
@@ -683,14 +772,31 @@
         </div>
     </nav>
 
-    <!-- ═══════════════════════════════════════
-         HERO BANNER
-    ═══════════════════════════════════════ -->
-    <header class="about-hero">
-        <div class="container about-hero-content">
+    <!-- Doctor Switcher -->
+    <div class="doctor-switcher-wrap">
+        <div class="container">
+            <div class="doctor-switcher">
+                <button class="switcher-btn active" data-target="sheshadri">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Dr. P. Sheshadri</span>
+                </button>
+                <button class="switcher-btn" data-target="vatsala">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Dr. R. Vatsala</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="doctor-profile-sheshadri doctor-profile-block active">
+        <!-- ═══════════════════════════════════════
+             HERO BANNER
+        ═══════════════════════════════════════ -->
+        <header class="about-hero">
+            <div class="container about-hero-content">
             <!-- Doctor Photo -->
-            <div class="about-hero-img-wrap reveal-left" style="display: flex; align-items: center; justify-content: center; width: 280px; height: 320px; border-radius: 24px; border: 5px solid rgba(255, 255, 255, 0.25); background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)); color: #fff; text-align: center; padding: 25px; font-weight: 700; font-family: 'Outfit', sans-serif; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); font-size: 1.1rem; line-height: 1.4; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
-                <span>DR. P. SHESHADRI<br><small style="font-size: 0.78rem; font-weight: 500; opacity: 0.9; letter-spacing: 0.5px; display: block; margin-top: 10px;">Periodontist &amp; Implantologist</small></span>
+            <div class="about-hero-img-wrap reveal-left">
+                <img src="assets/Dr.P.Sheshadi.jpg" alt="Dr. P. Sheshadri">
                 <div class="reg-badge"><i class="fa-solid fa-id-card"></i>&nbsp; Reg. No. 1873/A KSDC</div>
             </div>
 
@@ -770,6 +876,85 @@
             </div>
         </div>
     </section>
+    </div>
+
+    <div class="doctor-profile-vatsala doctor-profile-block">
+        <!-- ═══════════════════════════════════════
+             HERO BANNER (DR. VATSALA)
+        ═══════════════════════════════════════ -->
+        <header class="about-hero">
+            <div class="container about-hero-content">
+                <!-- Doctor Photo -->
+                <div class="about-hero-img-wrap reveal-left">
+                    <img src="assets/Vatsala.JPG" alt="Dr. R. Vatsala">
+                    <div class="reg-badge"><i class="fa-solid fa-id-card"></i>&nbsp; Reg. No. 1711/A-KSDC</div>
+                </div>
+
+                <!-- Doctor Info -->
+                <div class="about-hero-text animate-up">
+                    <span class="section-tag" style="color:#60A5FA;">Associate Professor &amp; Specialist</span>
+                    <h1>DR. R. VATSALA</h1>
+                    <p class="subtitle">BDS, MDS – Conservative Dentistry &amp; Endodontics<br>Associate Professor, Farooquia Dental College &amp; Hospital</p>
+
+                    <div class="about-hero-chips">
+                        <div class="hero-chip"><i class="fa-solid fa-graduation-cap"></i> BDS – JSS Dental College, 1992</div>
+                        <div class="hero-chip"><i class="fa-solid fa-hospital"></i> House Surgency – 1991–92</div>
+                        <div class="hero-chip"><i class="fa-solid fa-award"></i> MDS – Farooquia Dental College, 2016</div>
+                        <div class="hero-chip"><i class="fa-solid fa-chalkboard-user"></i> Associate Professor</div>
+                    </div>
+
+                    <div class="about-hero-stats">
+                        <div class="ah-stat">
+                            <span class="ah-stat-num">30<span>+</span></span>
+                            <span class="ah-stat-lbl">Years Experience</span>
+                        </div>
+                        <div class="ah-stat">
+                            <span class="ah-stat-num">10000<span>+</span></span>
+                            <span class="ah-stat-lbl">Patients Cured</span>
+                        </div>
+                        <div class="ah-stat">
+                            <span class="ah-stat-num">25<span>+</span></span>
+                            <span class="ah-stat-lbl">Academic Years</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- INTRO / ABOUT SECTION -->
+        <section class="about-page-section">
+            <div class="container intro-grid">
+                <div class="intro-text reveal-left">
+                    <span class="section-tag">Who She Is</span>
+                    <h2>A Legacy of Academic &amp; Clinical Excellence</h2>
+                    <p>Dr. R. Vatsala is a highly respected dental specialist and academician with over three decades of clinical, academic, and research experience in Conservative Dentistry &amp; Endodontics.</p>
+                    <p>She completed her BDS from the prestigious JSS Dental College in 1992, followed by intensive House Surgency. Her academic journey began in 1992 as a Lecturer at KVG Dental College, Sullia, and later flourished at Farooquia Dental College, Mysore, teaching Prosthodontics, Conservative Dentistry, and Endodontics.</p>
+                    <p>With an unwavering dedication to clinical perfection, she earned her MDS in Conservative Dentistry &amp; Endodontics in 2016. Today, she serves as an Associate Professor, mentoring future dentists while bringing senior-level expertise to patients at Srinivasa Dental Clinic.</p>
+                    <div class="intro-features">
+                        <div class="intro-feature-item">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <span>Associate Professor – Conservative Dentistry &amp; Endodontics</span>
+                        </div>
+                        <div class="intro-feature-item">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>Over 25 years teaching at Farooquia Dental College</span>
+                        </div>
+                        <div class="intro-feature-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>KSDC Registered – Reg. No. 1711/A-KSDC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-img-col reveal-right delay-1">
+                    <img src="assets/hero2.png" alt="Advanced Dental Treatment at Srinivasa Dental Clinic">
+                    <div class="exp-float-badge">
+                        <span class="num">30+</span>
+                        <span class="lbl">Years of<br>Excellence</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- ═══════════════════════════════════════
          CLINIC GALLERY
@@ -816,10 +1001,11 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-         EDUCATION
-    ═══════════════════════════════════════ -->
-    <section class="about-page-section alt-bg">
+    <div class="doctor-profile-sheshadri doctor-profile-block active">
+        <!-- ═══════════════════════════════════════
+             EDUCATION
+        ═══════════════════════════════════════ -->
+        <section class="about-page-section alt-bg">
         <div class="container">
             <div class="section-title-block animate-up">
                 <span class="section-tag">Academic Background</span>
@@ -962,6 +1148,99 @@
             </div>
         </div>
     </section>
+    </div>
+
+    <div class="doctor-profile-vatsala doctor-profile-block">
+        <!-- ═══════════════════════════════════════
+             EDUCATION (DR. VATSALA)
+        ═══════════════════════════════════════ -->
+        <section class="about-page-section alt-bg">
+            <div class="container">
+                <div class="section-title-block animate-up">
+                    <span class="section-tag">Academic Background</span>
+                    <h2>Education &amp; Qualifications</h2>
+                </div>
+                <div class="edu-grid">
+                    <div class="edu-card scale-up delay-1">
+                        <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h4>Bachelor of Dental Surgery (BDS)</h4>
+                        <p class="edu-inst">JSS Dental College, Mysore</p>
+                        <p class="edu-year"><i class="fa-regular fa-calendar"></i>&nbsp; 1987 – 1992</p>
+                    </div>
+                    <div class="edu-card scale-up delay-2">
+                        <div class="edu-icon"><i class="fa-solid fa-hospital"></i></div>
+                        <h4>Housemanship / House Surgency</h4>
+                        <p class="edu-inst">Clinical Training</p>
+                        <p class="edu-year"><i class="fa-regular fa-calendar"></i>&nbsp; 1991 – 1992</p>
+                    </div>
+                    <div class="edu-card scale-up delay-3">
+                        <div class="edu-icon"><i class="fa-solid fa-award"></i></div>
+                        <h4>Master of Dental Surgery (MDS)</h4>
+                        <p class="edu-inst">Farooquia Dental College – Conservative Dentistry &amp; Endodontics</p>
+                        <p class="edu-year"><i class="fa-regular fa-calendar"></i>&nbsp; 2013 – 2016</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             CAREER TIMELINE (DR. VATSALA)
+        ═══════════════════════════════════════ -->
+        <section class="about-page-section">
+            <div class="container">
+                <div class="section-title-block animate-up">
+                    <span class="section-tag">Professional Journey</span>
+                    <h2>Career Timeline</h2>
+                </div>
+                <div class="timeline">
+                    <div class="tl-item scale-up delay-1">
+                        <div class="tl-dot"><i class="fa-solid fa-hospital"></i></div>
+                        <div class="tl-body">
+                            <span class="tl-year">1991 – 1992</span>
+                            <h4>House Surgency</h4>
+                            <p>Completed intensive clinical rotation and housemanship, gaining robust hands-on experience in general dentistry.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item scale-up delay-2">
+                        <div class="tl-dot"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <div class="tl-body">
+                            <span class="tl-year">1992 – 1993</span>
+                            <h4>Lecturer – Department of Orthodontics</h4>
+                            <p>Joined KVG Dental College, Sullia, as Lecturer in the Department of Orthodontics, initiating her academic career.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item scale-up delay-3">
+                        <div class="tl-dot"><i class="fa-solid fa-book-open"></i></div>
+                        <div class="tl-body">
+                            <span class="tl-year">1993 – 2013</span>
+                            <h4>Lecturer – Farooquia Dental College</h4>
+                            <p>Served as Lecturer at Farooquia Dental College, Mysore, in both the Dept. of Prosthodontics and Dept. of Conservative Dentistry and Endodontics, dedicating two decades to foundational dental teaching and clinical mentorship.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item scale-up delay-1">
+                        <div class="tl-dot"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="tl-body">
+                            <span class="tl-year">2013 – 2016</span>
+                            <h4>MDS Course – Conservative Dentistry &amp; Endodontics</h4>
+                            <p>Pursued advanced post-graduate specialisation (MDS) at Farooquia Dental College, focusing on advanced micro-endodontics and aesthetic restorations.</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-item scale-up delay-2">
+                        <div class="tl-dot"><i class="fa-solid fa-user-doctor"></i></div>
+                        <div class="tl-body">
+                            <span class="tl-year">2016 – Present</span>
+                            <h4>Assistant Professor &amp; Associate Professor – FDC</h4>
+                            <p>Joined as Assistant Professor and subsequently promoted to Associate Professor in the Department of Conservative Dentistry &amp; Endodontics at Farooquia Dental College &amp; Hospital, Mysore.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- ═══════════════════════════════════════
          CLINIC VALUES
@@ -1012,7 +1291,7 @@
                 Online &amp; In-Clinic Consultations
             </div>
             
-            <h2 style="color: #fff; font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; font-family: 'Outfit', sans-serif; letter-spacing: -0.5px;">Book a Consultation with Dr. Sheshadri</h2>
+            <h2 id="cta-title" style="color: #fff; font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; font-family: 'Outfit', sans-serif; letter-spacing: -0.5px;">Book a Consultation with Dr. Sheshadri</h2>
             <p style="color: rgba(255, 255, 255, 0.7); max-width: 600px; margin: 0 auto 35px auto; font-size: 1.1rem; line-height: 1.6; text-align: center;">
                 Take the first step towards a healthier, confident smile. Benefit from over 30 years of clinical and academic dental excellence.
             </p>
@@ -1066,6 +1345,59 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const switcherBtns = document.querySelectorAll('.switcher-btn');
+            const sheshadriBlocks = document.querySelectorAll('.doctor-profile-sheshadri');
+            const vatsalaBlocks = document.querySelectorAll('.doctor-profile-vatsala');
+            const ctaTitle = document.getElementById('cta-title');
+
+            switcherBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.getAttribute('data-target');
+                    
+                    // Update active button state
+                    switcherBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Toggle profiles with smooth fade/slide transitions
+                    if (target === 'sheshadri') {
+                        // Fade out Vatsala blocks
+                        vatsalaBlocks.forEach(el => el.classList.remove('active'));
+                        setTimeout(() => {
+                            vatsalaBlocks.forEach(el => el.style.display = 'none');
+                            
+                            // Show Sheshadri blocks
+                            sheshadriBlocks.forEach(el => el.style.display = 'block');
+                            setTimeout(() => {
+                                sheshadriBlocks.forEach(el => el.classList.add('active'));
+                            }, 50);
+                        }, 300);
+                        
+                        if (ctaTitle) {
+                            ctaTitle.textContent = 'Book a Consultation with Dr. Sheshadri';
+                        }
+                    } else {
+                        // Fade out Sheshadri blocks
+                        sheshadriBlocks.forEach(el => el.classList.remove('active'));
+                        setTimeout(() => {
+                            sheshadriBlocks.forEach(el => el.style.display = 'none');
+                            
+                            // Show Vatsala blocks
+                            vatsalaBlocks.forEach(el => el.style.display = 'block');
+                            setTimeout(() => {
+                                vatsalaBlocks.forEach(el => el.classList.add('active'));
+                            }, 50);
+                        }, 300);
+
+                        if (ctaTitle) {
+                            ctaTitle.textContent = 'Book a Consultation with Dr. R. Vatsala';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -6,10 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const skipBtn = document.getElementById('skip-intro');
 
     if (preloader && introVideo) {
-        if (window.innerWidth <= 768) {
+        const hasPlayed = localStorage.getItem('introPlayed');
+        if (hasPlayed || window.innerWidth <= 768) {
+            preloader.style.display = 'none';
             preloader.classList.add('hidden');
             introVideo.pause();
         } else {
+            localStorage.setItem('introPlayed', 'true');
+            
             // Hide when video ends
             introVideo.addEventListener('ended', () => {
                 preloader.classList.add('hidden');
