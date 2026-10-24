@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Dr. P. Sheshadri – Srinivasa Dental Clinic, Mysuru</title>
     <meta name="description"
-        content="Learn about Dr. P. Sheshadri – MDS Periodontics & Implantology, Professor & HOD at Farooquia Dental College, with 30+ years of dental expertise in Mysuru.">
+        content="Learn about Dr. P. Sheshadri – MDS Periodontics & Implantology, Professor & HOD at Farooquia Dental College, with 33+ years of dental expertise in Mysuru.">
     <meta name="keywords"
         content="Best dental clinic in Mysuru, Best Dentist Near Me, Dental Clinic in Kuvempunagar Mysuru, Dentist in Mysuru, Srinivasa Dental Clinic, Dr. P. Sheshadri, dentist, Kuvempunagar, dental implants Mysuru">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -149,7 +149,8 @@
         }
 
         .about-page-section.alt-bg {
-            background: #F8FAFC;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
         }
 
         /* ── Section Title ── */
@@ -645,15 +646,28 @@
             .clinic-gallery-img-wrap {
                 height: 220px;
             }
+
+            .doctor-switcher {
+                max-width: 100%;
+                gap: 6px;
+                padding: 4px;
+            }
+
+            .switcher-btn {
+                padding: 9px 12px;
+                font-size: 0.82rem;
+                gap: 6px;
+            }
         }
 
         /* ── Doctor Switcher Styles ── */
         .doctor-switcher-wrap {
             background: #F8FAFC;
-            padding: 24px 0;
+            padding: 20px 0;
             border-bottom: 1px solid var(--border-color);
             position: sticky;
-            top: 90px;
+            top: 58px;
+            margin-top: 98px;
             z-index: 100;
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
@@ -739,41 +753,108 @@
 </head>
 
 <body id="top">
+    <!-- Ambient Dynamic Lighting Layer -->
+    <div class="site-ambient-glows" aria-hidden="true">
+        <div class="ambient-glow glow-1"></div>
+        <div class="ambient-glow glow-2"></div>
+        <div class="ambient-glow glow-3"></div>
+    </div>
+
+    <!-- Floating Dental Icons Background Layer (Randomly Distributed & Low Opacity) -->
+    <div class="dental-floating-bg" aria-hidden="true">
+        <div class="floating-dental-icon icon-rand-1"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-2"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="floating-dental-icon icon-rand-3"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-4"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="floating-dental-icon icon-rand-5"><i class="fa-solid fa-teeth"></i></div>
+        <div class="floating-dental-icon icon-rand-6"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-7"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="floating-dental-icon icon-rand-8"><i class="fa-solid fa-teeth-open"></i></div>
+        <div class="floating-dental-icon icon-rand-9"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-10"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="floating-dental-icon icon-rand-11"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-12"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="floating-dental-icon icon-rand-13"><i class="fa-solid fa-teeth"></i></div>
+        <div class="floating-dental-icon icon-rand-14"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-15"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div class="floating-dental-icon icon-rand-16"><i class="fa-solid fa-tooth"></i></div>
+    </div>
+
     <!-- Scroll Progress -->
     <div id="scroll-progress" class="scroll-progress"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo">
-                <div class="logo-text">
-                    <span class="logo-title">Srinivasa</span>
-                    <span class="logo-subtitle">Dental Clinic</span>
+    <!-- Header with Topbar & Main Navigation (Logo Blue #223A76) -->
+    <header class="site-header" id="site-header">
+        <!-- 1. Top Announcement & Info Bar -->
+        <div class="header-topbar">
+            <div class="header-container topbar-container">
+                <div class="topbar-status">
+                    <span class="status-dot"></span>
+                    <span id="opd-status-text">Morning OPD Active Now | Kuvempunagar (Until 1:30 PM)</span>
                 </div>
-            </a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#services">Services</a>
-                <a href="about.html" class="active">About Us</a>
-                <div class="nav-actions">
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-                        <i class="fa-solid fa-moon"></i>
-                        <i class="fa-solid fa-sun"></i>
-                    </button>
-                    <a href="tel:+919448046136" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call Now</a>
+                <div class="topbar-right">
+                    <a href="tel:+919448046136" class="topbar-link">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 94480 46136</span>
+                    </a>
+                    <a href="mailto:sheshadripp@gmail.com" class="topbar-link">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>sheshadripp@gmail.com</span>
+                    </a>
+                    <div class="topbar-link topbar-hours">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Mon - Sat: 9:30AM - 1:30PM &amp; 5PM - 8:30PM</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
+
+        <!-- 2. Main Navigation Bar -->
+        <nav class="main-navbar" id="navbar">
+            <div class="header-container navbar-container">
+                <a href="index.html" class="navbar-logo">
+                    <div class="header-logo-badge">
+                        <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo">
+                    </div>
+                </a>
+
+                <div class="navbar-menu-wrap" id="navbar-menu-wrap">
+                    <ul class="navbar-menu" id="nav-links">
+                        <li><a href="index.html" class="nav-item">Home</a></li>
+                        <li><a href="about.html" class="nav-item active">About</a></li>
+                        <li><a href="index.html#services" class="nav-item">Services</a></li>
+                        <li><a href="index.html#synergy" class="nav-item">Synergy</a></li>
+                        <li><a href="index.html#about" class="nav-item">Why Us</a></li>
+                        <li><a href="index.html#facilities" class="nav-item">Facilities</a></li>
+                        <li><a href="index.html#reviews" class="nav-item">Reviews</a></li>
+                        <li><a href="index.html#faq" class="nav-item">FAQ</a></li>
+                        <li><a href="index.html#contact" class="nav-item">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="navbar-actions">
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="tel:+919448046136" class="btn-call-now">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <a href="index.html#contact" class="btn-book-consult">
+                        <span>Book Consultation</span>
+                    </a>
+                    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation Menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <!-- Doctor Switcher -->
-    <div class="doctor-switcher-wrap">
+    <div class="doctor-switcher-wrap" id="doctors">
         <div class="container">
             <div class="doctor-switcher">
                 <button class="switcher-btn active" data-target="sheshadri">
@@ -818,7 +899,7 @@
 
                 <div class="about-hero-stats">
                     <div class="ah-stat">
-                        <span class="ah-stat-num">30<span>+</span></span>
+                        <span class="ah-stat-num">33<span>+</span></span>
                         <span class="ah-stat-lbl">Years Experience</span>
                     </div>
                     <div class="ah-stat">
@@ -856,7 +937,7 @@
                     </div>
                     <div class="intro-feature-item">
                         <i class="fa-solid fa-building-columns"></i>
-                        <span>30+ years at Farooquia Dental College &amp; Hospital (FDC)</span>
+                        <span>33+ years at Farooquia Dental College &amp; Hospital (FDC)</span>
                     </div>
                     <div class="intro-feature-item">
                         <i class="fa-solid fa-tooth"></i>
@@ -871,7 +952,7 @@
             <div class="intro-img-col reveal-right delay-1">
                 <img src="assets/hero3.png" alt="Advanced Dental Technology at Srinivasa Dental Clinic">
                 <div class="exp-float-badge">
-                    <span class="num">30+</span>
+                    <span class="num">33+</span>
                     <span class="lbl">Years of<br>Excellence</span>
                 </div>
             </div>
@@ -949,7 +1030,7 @@
                 <div class="intro-img-col reveal-right delay-1">
                     <img src="assets/hero2.png" alt="Advanced Dental Treatment at Srinivasa Dental Clinic">
                     <div class="exp-float-badge">
-                        <span class="num">30+</span>
+                        <span class="num">33+</span>
                         <span class="lbl">Years of<br>Excellence</span>
                     </div>
                 </div>
@@ -1294,7 +1375,7 @@
             
             <h2 id="cta-title" style="color: #fff; font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; font-family: 'Outfit', sans-serif; letter-spacing: -0.5px;">Book a Consultation with Dr. Sheshadri</h2>
             <p style="color: rgba(255, 255, 255, 0.7); max-width: 600px; margin: 0 auto 35px auto; font-size: 1.1rem; line-height: 1.6; text-align: center;">
-                Take the first step towards a healthier, confident smile. Benefit from over 30 years of clinical and academic dental excellence.
+                Take the first step towards a healthier, confident smile. Benefit from over 33 years of clinical and academic dental excellence.
             </p>
             
             <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
@@ -1305,45 +1386,154 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════ -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo" class="footer-logo">
-                <p>Advanced dental care with a personal touch. We believe everyone deserves a healthy, beautiful smile.</p>
-                <p class="footer-contact-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:sheshadripp@gmail.com">sheshadripp@gmail.com</a></p>
-                <p class="footer-contact-item" style="margin-top: 10px; font-size: 0.9rem; line-height: 1.5;"><i class="fa-solid fa-location-dot"></i> 851, Panchamantra Rd, near Gnanaganga School, E&F Block, Kuvempu Nagara, Mysuru, Karnataka 570023</p>
-            </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-map">
-                <h4>Our Location</h4>
-                <div style="border-radius: 12px; overflow: hidden; height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid var(--border-color);">
-                    <iframe src="https://www.google.com/maps?q=Srinivasa%20Dental%20Clinic%20Kuvempu%20Nagara%20Mysuru%20851%20Panchamantra%20Road&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="container">
+            <!-- Main Footer 4-Column Grid -->
+            <div class="footer-grid">
+                <!-- Column 1: Brand & Credentials -->
+                <div class="footer-col footer-col-brand">
+                    <a href="index.html" class="footer-logo-link">
+                        <div class="footer-logo-box">
+                            <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo" class="footer-logo">
+                        </div>
+                    </a>
+                    <p class="footer-tagline">Srinivasa Dental Clinic &amp; Implant Centre</p>
+                    <p class="footer-desc">Mysuru's premier center for advanced dental implants, laser periodontics, and complete smile care led by Dr. P. Sheshadri and Dr. R. Vatsala with 33+ years of clinical excellence.</p>
+                    <div class="footer-trust-chips">
+                        <span class="ft-chip"><i class="fa-solid fa-award"></i> 33+ Yrs Legacy</span>
+                        <span class="ft-chip"><i class="fa-solid fa-certificate"></i> Reg. Specialists</span>
+                        <span class="ft-chip"><i class="fa-solid fa-shield-halved"></i> 100% Sterile RVG</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/919448046136" target="_blank" rel="noopener" aria-label="WhatsApp Us"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+919448046136" aria-label="Call Doctor"><i class="fa-solid fa-phone"></i></a>
+                        <a href="https://maps.google.com/?q=Srinivasa+Dental+Clinic+Kuvempunagar+Mysuru+851+Panchamantra+Road" target="_blank" rel="noopener" aria-label="Google Maps Location"><i class="fa-solid fa-location-dot"></i></a>
+                        <a href="mailto:sheshadripp@gmail.com" aria-label="Send Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Clinical Treatments -->
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-heading">Clinical Treatments</h4>
+                    <ul class="footer-menu">
+                        <li><a href="index.html#services"><i class="fa-solid fa-chevron-right"></i> Digital Dental RVG X-Rays</a></li>
+                        <li><a href="index.html#services"><i class="fa-solid fa-chevron-right"></i> Advanced Dental Implants</a></li>
+                        <li><a href="index.html#services"><i class="fa-solid fa-chevron-right"></i> Periodontal Gum Therapy</a></li>
+                        <li><a href="index.html#services"><i class="fa-solid fa-chevron-right"></i> Oral &amp; Maxillofacial Surgery</a></li>
+                        <li><a href="index.html#services"><i class="fa-solid fa-chevron-right"></i> Micro-Endodontic Root Canals</a></li>
+                        <li><a href="index.html#services"><i class="fa-solid fa-chevron-right"></i> Aesthetic Smile Designing</a></li>
+                        <li><a href="index.html#services"><i class="fa-solid fa-chevron-right"></i> Painless Teeth Extractions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: OPD Schedule & Doctors -->
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-heading">OPD Schedule</h4>
+                    <div class="footer-hours-card">
+                        <div class="hours-row">
+                            <span class="hours-day">Mon – Sat Morning:</span>
+                            <span class="hours-time">9:30 AM – 1:30 PM</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Mon – Sat Evening:</span>
+                            <span class="hours-time">5:00 PM – 8:30 PM</span>
+                        </div>
+                        <div class="hours-row highlight-sunday">
+                            <span class="hours-day">Sunday:</span>
+                            <span class="hours-time">Emergency On-Call</span>
+                        </div>
+                    </div>
+                    <div class="footer-doctors-summary">
+                        <div class="f-doc-item">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <div>
+                                <strong>Dr. P. Sheshadri (MDS)</strong>
+                                <span>Periodontist &amp; Implantologist</span>
+                            </div>
+                        </div>
+                        <div class="f-doc-item">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <div>
+                                <strong>Dr. R. Vatsala</strong>
+                                <span>Dental Surgeon &amp; Consultant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4: Location & Contact -->
+                <div class="footer-col footer-col-contact">
+                    <h4 class="footer-heading">Clinic Location</h4>
+                    <div class="footer-contact-list">
+                        <div class="f-contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <span class="fc-label">Address</span>
+                                <p class="fc-val">851, Panchamantra Rd, Near Gnanaganga School, E&amp;F Block, Kuvempunagar, Mysuru, Karnataka 570023</p>
+                            </div>
+                        </div>
+                        <div class="f-contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <span class="fc-label">Appointments &amp; Help Desk</span>
+                                <a href="tel:+919448046136" class="fc-val fc-link">+91 94480 46136</a>
+                            </div>
+                        </div>
+                        <div class="f-contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <span class="fc-label">Email</span>
+                                <a href="mailto:sheshadripp@gmail.com" class="fc-val fc-link">sheshadripp@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Srinivasa+Dental+Clinic+Kuvempunagar+Mysuru+851+Panchamantra+Road" target="_blank" rel="noopener" class="footer-map-btn">
+                        <i class="fa-solid fa-diamond-turn-right"></i> Get Directions on Google Maps
+                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Footer Bottom Sub-Bar -->
         <div class="footer-bottom">
-            <p>&copy; 2026 Srinivasa Dental Clinic. All Rights Reserved.</p>
-            <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.8;">Powered By : <a
-                    href="https://www.navabharathtechnologies.com/" target="_blank"
-                    onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Navabharath
-                    Technologies</a></p>
+            <div class="container footer-bottom-container">
+                <p class="footer-copy">&copy; 2026 Srinivasa Dental Clinic. All Rights Reserved. Committed to Healthy Smiles Since 1993.</p>
+                <div class="footer-bottom-links">
+                    <a href="index.html">Home</a>
+                    <span class="sep">•</span>
+                    <a href="about.html">About Doctors</a>
+                    <span class="sep">•</span>
+                    <a href="index.html#services">Services</a>
+                    <span class="sep">•</span>
+                    <a href="index.html#synergy">Synergy</a>
+                    <span class="sep">•</span>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <p class="footer-powered">Powered By: <a href="https://www.navabharathtechnologies.com/" target="_blank" rel="noopener">Navabharath Technologies</a></p>
+            </div>
         </div>
     </footer>
 
     <div class="back-to-top" id="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </div>
+
+    <!-- Mobile Sticky Quick-Action Bar (Phone View Only) -->
+    <aside class="mobile-bottom-bar" aria-label="Mobile Quick Actions">
+        <a href="tel:+919448046136" class="mob-bar-btn mob-bar-call" aria-label="Call Doctor">
+            <i class="fa-solid fa-phone"></i>
+            <span>Call OPD</span>
+        </a>
+        <a href="https://wa.me/919448046136" target="_blank" rel="noopener" class="mob-bar-btn mob-bar-wa" aria-label="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="index.html#contact" class="mob-bar-btn mob-bar-book" aria-label="Book Consultation">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Book Visit</span>
+        </a>
+    </aside>
 
     <script src="script.js"></script>
     <script>

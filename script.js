@@ -1,221 +1,357 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 0. Video Preloader Logic
-    const preloader = document.getElementById('video-preloader');
-    const introVideo = document.getElementById('intro-video');
-    const skipBtn = document.getElementById('skip-intro');
-
-    if (preloader && introVideo) {
-        const hasPlayed = localStorage.getItem('introPlayed');
-        if (hasPlayed || window.innerWidth <= 768) {
-            preloader.style.display = 'none';
-            preloader.classList.add('hidden');
-            introVideo.pause();
-        } else {
-            localStorage.setItem('introPlayed', 'true');
-            
-            // Hide when video ends
-            introVideo.addEventListener('ended', () => {
-                preloader.classList.add('hidden');
-            });
-
-            // Hide when skip button is clicked
-            if (skipBtn) {
-                skipBtn.addEventListener('click', () => {
-                    preloader.classList.add('hidden');
-                    introVideo.pause();
-                });
-            }
-
-            // Fallback: hide after 8 seconds just in case video fails to load/play
-            setTimeout(() => {
-                if (!preloader.classList.contains('hidden')) {
-                    preloader.classList.add('hidden');
-                }
-            }, 8000);
-        }
-    }
-
-    const navbar = document.getElementById('navbar');
+    const siteHeader = document.getElementById('site-header') || document.querySelector('.site-header') || document.getElementById('navbar');
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
-    const scrollProgress = document.getElementById('scroll-progress');
-    const backToTop = document.getElementById('back-to-top');
-    const isHomePage = document.querySelector('.hero-section');
+    const menuWrap = document.getElementById('navbar-menu-wrap');
+    const appointmentForm = document.getElementById('appointment-form');
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const opdStatusText = document.getElementById('opd-status-text');
 
-    // 1. Scroll Effects (Navbar, Progress Bar, Back to Top)
-    const handleScroll = () => {
-        const scrollY = window.scrollY;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (scrollY / height) * 100;
+    // 1. Dynamic Live OPD Status Calculation
+    function updateOPDStatus() {
+        if (!opdStatusText) return;
+        const now = new Date();
+        const day = now.getDay(); // 0 is Sunday
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const currentTime = hours + minutes / 60;
 
-        // Sticky Navbar — always white, just add extra shadow on scroll
-        if (scrollY > 50) {
-            navbar.classList.add('scrolled');
+        if (day === 0) {
+            opdStatusText.textContent = "OPD Closed Today (Sunday) | Emergency On Call";
+            const dot = document.querySelector('.status-dot');
+            if (dot) dot.style.backgroundColor = '#F59E0B';
+            return;
+        }
+
+        // Mon - Sat: 9:30 AM - 1:30 PM (9.5 to 13.5) & 5:00 PM - 8:30 PM (17.0 to 20.5)
+        if (currentTime >= 9.5 && currentTime <= 13.5) {
+            opdStatusText.textContent = "Morning OPD Active Now | Kuvempunagar (Until 1:30 PM)";
+        } else if (currentTime > 13.5 && currentTime < 17.0) {
+            opdStatusText.textContent = "Evening OPD Starts at 5:00 PM | Kuvempunagar";
+        } else if (currentTime >= 17.0 && currentTime <= 20.5) {
+            opdStatusText.textContent = "Evening OPD Active Now | Kuvempunagar (Until 8:30 PM)";
         } else {
-            navbar.classList.remove('scrolled');
+            opdStatusText.textContent = "Morning OPD Active at 9:30 AM | Kuvempunagar";
         }
-
-        // Progress Bar
-        if (scrollProgress) {
-            scrollProgress.style.width = `${scrolled}%`;
-        }
-
-        // Back to Top
-        if (backToTop) {
-            if (scrollY > 500) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
-        }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-
-    // 2. Back to Top Click
-    if (backToTop) {
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
     }
+    updateOPDStatus();
 
-    // 3. Mobile Menu Toggle
-    mobileMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileMenu.classList.toggle('is-active');
+    // 2. Sticky Header on Scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            if (siteHeader) siteHeader.classList.add('scrolled');
+        } else {
+            if (siteHeader) siteHeader.classList.remove('scrolled');
+        }
     });
 
-    // 4. Theme Toggle Logic
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        const setTheme = (theme) => {
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
+    // 3. Mobile Menu Toggle
+    if (mobileMenu && menuWrap) {
+        mobileMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuWrap.classList.toggle('active');
+            mobileMenu.classList.toggle('is-active');
+            document.body.classList.toggle('mobile-menu-open');
+        });
+
+        // Auto close when any nav link is tapped on mobile
+        const navLinks = menuWrap.querySelectorAll('.nav-item');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuWrap.classList.remove('active');
+                mobileMenu.classList.remove('is-active');
+                document.body.classList.remove('mobile-menu-open');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (menuWrap.classList.contains('active') && !menuWrap.contains(e.target) && !mobileMenu.contains(e.target)) {
+                menuWrap.classList.remove('active');
+                mobileMenu.classList.remove('is-active');
+                document.body.classList.remove('mobile-menu-open');
             }
-        };
-
-        const savedTheme = localStorage.getItem('theme');
-        
-        if (savedTheme) {
-            setTheme(savedTheme);
-        } else {
-            setTheme('light');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            setTheme(isDark ? 'light' : 'dark');
         });
     }
 
-    // 5. Counter Animation
-    const animateCounters = () => {
-        const counters = document.querySelectorAll('.stat-number, .stat-number-dark');
-        counters.forEach(counter => {
-            const target = parseFloat(counter.getAttribute('data-target'));
-            const speed = 100; // Animation steps
-            const isDecimal = target % 1 !== 0;
-            
-            // Set initial state to 0 formatted correctly
-            counter.innerText = isDecimal ? "0.0" : "0";
-            
-            let count = 0;
-            const updateCount = () => {
-                const inc = target / speed;
+    // 4. Dark / Light Theme Toggle System
+    function initTheme() {
+        const savedTheme = localStorage.getItem('srinivasa-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+    }
 
-                if (count < target) {
-                    count += inc;
-                    if (count >= target) {
-                        counter.innerText = isDecimal ? target.toFixed(1) : (target >= 1000 ? (target / 1000).toFixed(0) + 'k' : target);
-                    } else {
-                        counter.innerText = isDecimal ? count.toFixed(1) : Math.ceil(count);
-                        setTimeout(updateCount, 15);
-                    }
-                } else {
-                    counter.innerText = isDecimal ? target.toFixed(1) : (target >= 1000 ? (target / 1000).toFixed(0) + 'k' : target);
-                }
-            };
-            updateCount();
+    function updateThemeIcon(theme) {
+        if (!themeToggleBtn) return;
+        const icon = themeToggleBtn.querySelector('i');
+        if (icon) {
+            if (theme === 'dark') {
+                icon.className = 'fa-solid fa-sun';
+            } else {
+                icon.className = 'fa-solid fa-moon';
+            }
+        }
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('srinivasa-theme', newTheme);
+            updateThemeIcon(newTheme);
         });
-    };
+    }
+    initTheme();
+
+    // 5. FAQ Accordion Toggle
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                // Close all others
+                faqItems.forEach(other => other.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
 
     // 6. Scroll Reveal Animations
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('appear');
-                
-                // Trigger counter if it's the hero stats section
-                if (entry.target.classList.contains('hero-stats') || entry.target.classList.contains('hero-stats-dark')) {
-                    animateCounters();
-                }
-                
-                // If it contains children with animations, trigger them too (for simplicity)
-                const children = entry.target.querySelectorAll('.animate-up, .reveal-left, .reveal-right, .scale-up');
-                children.forEach(child => child.classList.add('appear'));
             }
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.animate-up, .animate-fade, .reveal-left, .reveal-right, .scale-up, .hero-stats, .hero-stats-dark');
+    const animatedElements = document.querySelectorAll('.animate-up, .animate-fade, .service-box, .facility-card, .review-card');
     animatedElements.forEach(el => observer.observe(el));
 
-    // Typing effect removed as requested
+    // 7. Clinical Concierge Booking Form Handling
+    if (appointmentForm) {
+        // A. Setup Date Picker min & default today
+        const dateInput = document.getElementById('rf-date');
+        if (dateInput) {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const todayStr = `${yyyy}-${mm}-${dd}`;
+            dateInput.min = todayStr;
+            if (!dateInput.value) {
+                dateInput.value = todayStr;
+            }
+        }
 
-
-    // 8. 3D Tilt Effect for Service Boxes
-    const cards = document.querySelectorAll('.service-box');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        // B. Time Slot Selection Card Toggle
+        const slotCards = document.querySelectorAll('.rf-slot-card');
+        slotCards.forEach(card => {
+            card.addEventListener('click', () => {
+                slotCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                const radio = card.querySelector('input[type="radio"]');
+                if (radio) radio.checked = true;
+            });
         });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
 
-    // 9. Smooth Scroll for all anchor links on current page
+        // C. Enhanced Custom Dropdowns Logic
+        const customDropdowns = document.querySelectorAll('.custom-dropdown');
+        const timingText = document.getElementById('rf-timing-text');
+
+        customDropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const selectedText = dropdown.querySelector('.dropdown-selected-text');
+            const targetInputId = dropdown.getAttribute('data-target');
+            const targetInput = document.getElementById(targetInputId);
+            const items = dropdown.querySelectorAll('.dropdown-item');
+
+            if (!trigger || !menu) return;
+
+            // Toggle Open/Close
+            trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = dropdown.classList.contains('open');
+                // Close all other dropdowns first
+                customDropdowns.forEach(d => {
+                    d.classList.remove('open');
+                    d.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    dropdown.classList.add('open');
+                    trigger.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            // Keyboard accessibility
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    trigger.click();
+                } else if (e.key === 'Escape') {
+                    dropdown.classList.remove('open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Option Selection
+            items.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const val = item.getAttribute('data-value');
+
+                    // Update UI text & active classes
+                    items.forEach(i => {
+                        i.classList.remove('selected');
+                        i.removeAttribute('aria-selected');
+                    });
+                    item.classList.add('selected');
+                    item.setAttribute('aria-selected', 'true');
+                    const displayVal = item.getAttribute('data-display') || val;
+                    if (selectedText) {
+                        selectedText.textContent = displayVal;
+                    }
+
+                    // Update underlying input
+                    if (targetInput) {
+                        targetInput.value = val;
+                        targetInput.dispatchEvent(new Event('change'));
+                    }
+
+                    // Dynamic Doctor Timing updates
+                    if (targetInputId === 'rf-doctor' && timingText) {
+                        if (val.includes('Sheshadri')) {
+                            timingText.textContent = 'Dr. Sheshadri: 9:30 AM – 1:30 PM & 5:00 PM – 8:30 PM';
+                        } else if (val.includes('Vatsala')) {
+                            timingText.textContent = 'Dr. Vatsala: 9:30 AM – 1:30 PM & 5:00 PM – 8:30 PM';
+                        } else {
+                            timingText.textContent = 'OPD: 9:30 AM – 1:30 PM & 5:00 PM – 8:30 PM';
+                        }
+                    }
+
+                    dropdown.classList.remove('open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        });
+
+        // Close dropdowns on click outside
+        document.addEventListener('click', () => {
+            customDropdowns.forEach(d => {
+                d.classList.remove('open');
+                d.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // D. Form Submission with Validation and WhatsApp Pass
+        const submitBtn = document.getElementById('rf-submit-btn') || appointmentForm.querySelector('button[type="submit"]');
+        const successBanner = document.getElementById('rf-success-banner');
+        const successMsg = document.getElementById('rf-success-msg');
+        const whatsappLink = document.getElementById('rf-whatsapp-link');
+
+        appointmentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nameInput = document.getElementById('rf-name');
+            const phoneInput = document.getElementById('rf-phone');
+            const deptInput = document.getElementById('rf-dept');
+            const doctorInput = document.getElementById('rf-doctor');
+            const chosenDateInput = document.getElementById('rf-date');
+            const chosenSlot = document.querySelector('input[name="time_slot"]:checked');
+            const messageInput = document.getElementById('rf-message');
+
+            if (!nameInput.value.trim()) {
+                nameInput.focus();
+                return;
+            }
+            if (!phoneInput.value.trim()) {
+                phoneInput.focus();
+                return;
+            }
+
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Processing Consultation...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+
+                const patientName = nameInput.value.trim();
+                const patientPhone = phoneInput.value.trim();
+                const patientDept = deptInput ? deptInput.value : 'General';
+                const patientDoctor = doctorInput ? doctorInput.value : 'Specialist';
+                const patientDate = chosenDateInput ? chosenDateInput.value : 'Upcoming';
+                const patientSlot = chosenSlot ? chosenSlot.value : 'Morning';
+                const patientMsg = messageInput ? messageInput.value.trim() : '';
+
+                if (successBanner) {
+                    successBanner.classList.add('show');
+                    if (successMsg) {
+                        successMsg.textContent = `Thank you, ${patientName}! Your priority consultation with ${patientDoctor.split('(')[0].trim()} on ${patientDate} (${patientSlot}) is registered.`;
+                    }
+                    if (whatsappLink) {
+                        const waText = encodeURIComponent(
+                            `Hello Srinivasa Dental Clinic, I have submitted an appointment request.\n\n` +
+                            `*Patient Name:* ${patientName}\n` +
+                            `*Phone:* ${patientPhone}\n` +
+                            `*Department:* ${patientDept}\n` +
+                            `*Preferred Doctor:* ${patientDoctor}\n` +
+                            `*Date:* ${patientDate}\n` +
+                            `*Slot:* ${patientSlot}` +
+                            (patientMsg ? `\n*Concern:* ${patientMsg}` : '')
+                        );
+                        whatsappLink.href = `https://wa.me/919448046136?text=${waText}`;
+                    }
+                    successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+
+                appointmentForm.reset();
+                // Restore default date
+                if (dateInput) {
+                    const today = new Date();
+                    const yyyy = today.getFullYear();
+                    const mm = String(today.getMonth() + 1).padStart(2, '0');
+                    const dd = String(today.getDate()).padStart(2, '0');
+                    dateInput.value = `${yyyy}-${mm}-${dd}`;
+                }
+                // Restore first active slot
+                slotCards.forEach((c, idx) => {
+                    if (idx === 0) {
+                        c.classList.add('active');
+                        const radio = c.querySelector('input[type="radio"]');
+                        if (radio) radio.checked = true;
+                    } else {
+                        c.classList.remove('active');
+                    }
+                });
+            }, 900);
+        });
+    }
+
+    // 8. Smooth Scroll for in-page anchors & close mobile menu
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const target = document.querySelector(targetId);
+            const href = this.getAttribute('href');
+            if (href === '#' || href === '') return;
+            const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth'
                 });
-                
-                // Close mobile menu if open
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    mobileMenu.classList.remove('is-active');
+
+                if (menuWrap && menuWrap.classList.contains('active')) {
+                    menuWrap.classList.remove('active');
+                    if (mobileMenu) mobileMenu.classList.remove('is-active');
                 }
             }
         });

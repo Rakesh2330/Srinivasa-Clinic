@@ -7,8 +7,6 @@
     <title>Srinivasa Dental Clinic | Dental Implants & Speciality Centre</title>
     <meta name="description"
         content="Srinivasa Dental Clinic - Premium dental care and speciality implants centre with modern technology.">
-    <meta name="keywords"
-        content="Best dental clinic in Mysuru, Best Dentist Near Me, Dental Clinic in Kuvempunagar Mysuru, Dentist in Mysuru, Srinivasa Dental Clinic, Dr. P. Sheshadri, dentist, Kuvempunagar, dental implants Mysuru">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,147 +15,141 @@
         rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body id="top">
-    <!-- Video Preloader Intro -->
-    <div id="video-preloader" class="video-preloader">
-        <video id="intro-video" src="assets/videomp_.mp4" autoplay muted playsinline></video>
-        <div class="skip-btn-wrap">
-            <button id="skip-intro" class="btn btn-primary">Skip Intro</button>
-        </div>
+<body>
+    <!-- Ambient Dynamic Lighting Layer -->
+    <div class="site-ambient-glows" aria-hidden="true">
+        <div class="ambient-glow glow-1"></div>
+        <div class="ambient-glow glow-2"></div>
+        <div class="ambient-glow glow-3"></div>
     </div>
-    <!-- Progress Bar -->
-    <div class="scroll-progress" id="scroll-progress"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo">
-                <div class="logo-text">
-                    <span class="logo-title">Srinivasa</span>
-                    <span class="logo-subtitle">Dental Clinic</span>
+    <!-- Floating Dental Icons Background Layer (Randomly Distributed & Low Opacity) -->
+    <div class="dental-floating-bg" aria-hidden="true">
+        <div class="floating-dental-icon icon-rand-1"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-2"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="floating-dental-icon icon-rand-3"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-4"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="floating-dental-icon icon-rand-5"><i class="fa-solid fa-teeth"></i></div>
+        <div class="floating-dental-icon icon-rand-6"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-7"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="floating-dental-icon icon-rand-8"><i class="fa-solid fa-teeth-open"></i></div>
+        <div class="floating-dental-icon icon-rand-9"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-10"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="floating-dental-icon icon-rand-11"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-12"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="floating-dental-icon icon-rand-13"><i class="fa-solid fa-teeth"></i></div>
+        <div class="floating-dental-icon icon-rand-14"><i class="fa-solid fa-tooth"></i></div>
+        <div class="floating-dental-icon icon-rand-15"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div class="floating-dental-icon icon-rand-16"><i class="fa-solid fa-tooth"></i></div>
+    </div>
+
+    <!-- Header with Topbar & Main Navigation (Logo Blue #223A76) -->
+    <header class="site-header" id="site-header">
+        <!-- 1. Top Announcement & Info Bar -->
+        <div class="header-topbar">
+            <div class="header-container topbar-container">
+                <div class="topbar-status">
+                    <span class="status-dot"></span>
+                    <span id="opd-status-text">Morning OPD Active Now | Kuvempunagar (Until 1:30 PM)</span>
                 </div>
-            </a>
-            <div class="nav-links" id="nav-links">
-                <a href="#hero">Home</a>
-                <a href="#services">Services</a>
-                <a href="about.html">About Us</a>
-                <div class="nav-actions">
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-                        <i class="fa-solid fa-moon"></i>
-                        <i class="fa-solid fa-sun"></i>
-                    </button>
-                    <a href="tel:+919448046136" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call Now</a>
+                <div class="topbar-right">
+                    <a href="tel:+919448046136" class="topbar-link">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 94480 46136</span>
+                    </a>
+                    <a href="mailto:sheshadripp@gmail.com" class="topbar-link">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>sheshadripp@gmail.com</span>
+                    </a>
+                    <div class="topbar-link topbar-hours">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Mon - Sat: 9:30AM - 1:30PM &amp; 5PM - 8:30PM</span>
+                    </div>
                 </div>
-            </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
             </div>
         </div>
-    </nav>
+
+        <!-- 2. Main Navigation Bar -->
+        <nav class="main-navbar" id="navbar">
+            <div class="header-container navbar-container">
+                <a href="index.html" class="navbar-logo">
+                    <div class="header-logo-badge">
+                        <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo">
+                    </div>
+                </a>
+
+                <div class="navbar-menu-wrap" id="navbar-menu-wrap">
+                    <ul class="navbar-menu" id="nav-links">
+                        <li><a href="#hero" class="nav-item active">Home</a></li>
+                        <li><a href="about.html" class="nav-item">About</a></li>
+                        <li><a href="#services" class="nav-item">Services</a></li>
+                        <li><a href="#synergy" class="nav-item">Synergy</a></li>
+                        <li><a href="#about" class="nav-item">Why Us</a></li>
+                        <li><a href="#facilities" class="nav-item">Facilities</a></li>
+                        <li><a href="#reviews" class="nav-item">Reviews</a></li>
+                        <li><a href="#faq" class="nav-item">FAQ</a></li>
+                        <li><a href="#contact" class="nav-item">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="navbar-actions">
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <a href="tel:+919448046136" class="btn-call-now">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <a href="#contact" class="btn-book-consult">
+                        <span>Book Consultation</span>
+                    </a>
+                    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation Menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <header id="hero" class="hero-section hero-fullscreen" style="background-image: url('assets/hero.png');">
-        <div class="hero-bg-overlay"></div>
-
-        <div class="container hero-content-fullscreen">
-            <!-- Center Text -->
-            <div class="hero-text-center animate-up">
-
-                <div style="margin-bottom: 20px;">
-                    <span class="tagline tagline-light"><i class="fa-solid fa-tooth"></i>&nbsp; Trusted Dental Care in
-                        Mysuru</span>
+    <header id="hero" class="hero-section">
+        <div class="container hero-content">
+            <div class="hero-text animate-up">
+                <span class="tagline">Premium Dental Care</span>
+                <h1>Advanced Care for Your <span class="highlight">Perfect Smile</span></h1>
+                <p>Experience world-class dental treatments at Srinivasa Dental Clinic. From digital implants to
+                    speciality cosmetic dentistry, we blend technology with compassion.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Make an Appointment</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
                 </div>
-
-                <div class="hero-doctor-badge">
-                    <h3>DR. P. SHESHADRI</h3>
-                    <p>BDS, MDS • Periodontist &amp; Implantologist</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">33+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5k+</span>
+                        <span class="stat-label">Happy Patients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Emergency Care</span>
+                    </div>
                 </div>
-
-                <h1 class="text-white">Your Smile Deserves the <span class="highlight-light">Best Care</span></h1>
-                <p class="hero-desc-light">Experience world-class dental treatments at Srinivasa Dental Clinic. From
-                    digital implants to speciality cosmetic dentistry-we blend technology with compassion.</p>
-
-                <div class="hero-btns justify-center">
-                    <a href="tel:+919448046136" class="btn btn-primary" id="hero-call-btn">
-                        <i class="fa-solid fa-phone"></i> Call Now
-                    </a>
-                    <a href="#services" class="btn btn-glass" id="hero-services-btn">
-                        Our Services <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Stats -->
-                <div class="hero-stats stats-glass">
-                    <div class="stat-item reveal-left delay-1">
-                        <span class="stat-number" data-target="30" style="color:#fff;">0</span><span class="stat-plus"
-                            style="color:#60A5FA;">+</span>
-                        <span class="stat-label text-light">Years Experience</span>
-                    </div>
-                    <div class="stat-divider bg-light-divider"></div>
-                    <div class="stat-item reveal-left delay-2">
-                        <span class="stat-number" data-target="10000" style="color:#fff;">0</span><span
-                            class="stat-plus" style="color:#60A5FA;">+</span>
-                        <span class="stat-label text-light">Patients Cured</span>
-                    </div>
-                    <div class="stat-divider bg-light-divider"></div>
-                    <div class="stat-item reveal-left delay-3">
-                        <span class="stat-number" data-target="4.7" style="color:#fff;">0</span><span class="stat-plus"
-                            style="color:#FBBF24;">★</span>
-                        <span class="stat-label text-light">Google Rating</span>
-                    </div>
+            </div>
+            <div class="hero-image-wrapper animate-fade">
+                <div class="hero-image-card">
+                    <img src="assets/hero-bg.png" alt="Modern Dental Clinic" class="hero-img">
                 </div>
             </div>
         </div>
     </header>
-
-
-    <!-- About Clinic Summary Section -->
-    <section class="section-padding" style="background-color: var(--bg-light);">
-        <div class="container home-about-grid">
-            <div class="reveal-left">
-                <img src="assets/hero-doctor.png" alt="Srinivasa Dental Clinic"
-                    style="width: 100%; height: auto; border-radius: 24px; box-shadow: var(--shadow-lg);">
-            </div>
-            <div class="reveal-right delay-1">
-                <span class="section-tag">About Our Clinic</span>
-                <h2 style="font-size: 2.4rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.2;">A Legacy
-                    of Dental Excellence in Mysuru</h2>
-                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px; font-size: 1.05rem;">
-                    Srinivasa Dental Clinic is a premier speciality centre dedicated to providing advanced and
-                    compassionate dental care. Led by Dr. P. Sheshadri, our clinic blends state-of-the-art technology
-                    with over three decades of clinical expertise to give you the perfect smile.
-                </p>
-                <ul style="list-style: none; padding: 0; margin-bottom: 35px;">
-                    <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 12px;"><i
-                            class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.3rem;"></i>
-                        <strong style="color: var(--text-dark); font-size: 1.05rem;">30+ Years of Expertise</strong>
-                    </li>
-                    <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 12px;"><i
-                            class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.3rem;"></i>
-                        <strong style="color: var(--text-dark); font-size: 1.05rem;">Advanced Digital
-                            Implantology</strong>
-                    </li>
-                    <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 12px;"><i
-                            class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.3rem;"></i>
-                        <strong style="color: var(--text-dark); font-size: 1.05rem;">100% Sterile &amp; Hygienic
-                            Environment</strong>
-                    </li>
-                    <li style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"
-                            style="color: var(--accent); font-size: 1.3rem;"></i> <strong
-                            style="color: var(--text-dark); font-size: 1.05rem;">Patient-Centric Approach</strong></li>
-                </ul>
-                <a href="about.html" class="btn btn-primary">Know More About Us <i
-                        class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
 
     <!-- Services Section -->
     <section id="services" class="services-section section-padding">
@@ -165,179 +157,860 @@
             <div class="section-header animate-up">
                 <span class="section-tag">Our Specialities</span>
                 <h2>Comprehensive Dental Solutions</h2>
-                <p>We provide a wide range of dental services using state-of-the-art technology to ensure the best
-                    results for our patients.</p>
+                <p>We provide a complete spectrum of advanced dental treatments using state-of-the-art technology, specialized clinical expertise, and compassionate care.</p>
             </div>
             <div class="services-grid">
-                <div class="service-box scale-up delay-1">
-                    <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
-                    <h3>Teeth Cleaning</h3>
-                    <p>Professional cleaning to remove plaque and tartar for a brighter, healthier smile.</p>
+                <!-- 01. Computerized Dental X-Rays -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-x-ray"></i></div>
+                        <span class="service-number">01</span>
+                    </div>
+                    <h3>Computerized Dental X-Rays</h3>
+                    <p>High-resolution digital radiography (RVG) delivering instantaneous, crystal-clear chairside diagnostics with minimal radiation.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Ultra-low radiation digital RVG sensors</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Instant high-definition chairside image rendering</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Early detection of hidden decay &amp; bone levels</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Eco-friendly, paperless digital diagnostic records</li>
+                    </ul>
                 </div>
-                <div class="service-box scale-up delay-2">
-                    <div class="service-icon"><i class="fa-solid fa-teeth"></i></div>
-                    <h3>Fixed partial denture</h3>
-                    <p>Durable, natural-looking bridges to replace missing teeth and restore function.</p>
-                </div>
-                <div class="service-box scale-up delay-3">
-                    <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Root Canal Treatment</h3>
-                    <p>Advanced treatment to save and restore damaged or infected teeth with precision.</p>
-                </div>
-                <div class="service-box scale-up delay-4">
-                    <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
-                    <h3>Dental Implants</h3>
-                    <p>Permanent, high-quality replacement for missing teeth that look and feel real.</p>
-                </div>
-                <div class="service-box scale-up delay-5">
-                    <div class="service-icon"><i class="fa-solid fa-teeth-open"></i></div>
-                    <h3>Complete denture</h3>
-                    <p>Custom-fitted dentures for complete restorations, designed for comfort and aesthetics.</p>
-                </div>
-                <div class="service-box scale-up delay-1">
-                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h3>Bleaching/whitening of teeth</h3>
-                    <p>Professional-grade teeth whitening to brighten your smile and boost your confidence.</p>
-                </div>
-                <div class="service-box scale-up delay-2">
-                    <div class="service-icon"><i class="fa-solid fa-teeth"></i></div>
-                    <h3>Orthodontics</h3>
-                    <p>Modern braces and clear aligners to straighten teeth and improve alignment.</p>
-                </div>
-                <div class="service-box scale-up delay-3">
-                    <div class="service-icon"><i class="fa-solid fa-x-ray"></i></div>
-                    <h3>Computerized dental x-ray</h3>
-                    <p>Digital X-rays for accurate diagnosis and precise treatment planning with minimal radiation.</p>
-                </div>
-                <div class="service-box scale-up delay-4">
-                    <div class="service-icon"><i class="fa-solid fa-user-doctor"></i></div>
-                    <h3>Tooth extraction</h3>
-                    <p>Gentle, painless removal of damaged or crowded teeth by experienced specialists.</p>
-                </div>
-                <div class="service-box scale-up delay-5">
-                    <div class="service-icon"><i class="fa-solid fa-child"></i></div>
-                    <h3>Pediatric dentistry</h3>
-                    <p>Specialized dental care for children in a friendly, gentle, and fun environment.</p>
-                </div>
-            </div>.
 
+                <!-- 02. Oral Surgery -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                        <span class="service-number">02</span>
+                    </div>
+                    <h3>Oral Surgery</h3>
+                    <p>Expert minor surgical interventions performed with gentle anesthesia, strict sterile protocols, and minimal tissue trauma.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Atraumatic removal of impacted wisdom teeth</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Painless routine &amp; complicated tooth extractions</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Pre-implant bone grafting &amp; ridge preservation</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Hospital-grade sterilization &amp; rapid healing protocols</li>
+                    </ul>
+                </div>
+
+                <!-- 03. Teeth Cleaning -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
+                        <span class="service-number">03</span>
+                    </div>
+                    <h3>Teeth Cleaning</h3>
+                    <p>Comprehensive professional prophylaxis removing calculus, plaque, and stubborn stains to maintain pristine oral wellness.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Advanced ultrasonic scaling to clear tartar &amp; plaque</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Gentle subgingival biofilm debridement for healthy gums</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Prophy-jet polishing to eliminate deep coffee/tea stains</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Fluoride enamel protection &amp; preventive home care advice</li>
+                    </ul>
+                </div>
+
+                <!-- 04. Aesthetic Dentistry -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <span class="service-number">04</span>
+                    </div>
+                    <h3>Aesthetic Dentistry</h3>
+                    <p>Artistic smile transformations combining cosmetic laminates, whitening, and contouring for an enviable, confident smile.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Custom ultra-thin porcelain veneers &amp; laminates</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Professional in-office chairside teeth whitening</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Direct composite bonding for chips, cracks &amp; gaps</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Cosmetic tooth reshaping for optimal smile symmetry</li>
+                    </ul>
+                </div>
+
+                <!-- 05. Root Canal Treatment -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+                        <span class="service-number">05</span>
+                    </div>
+                    <h3>Root Canal Treatment</h3>
+                    <p>Gentle, pain-free endodontic therapy utilizing rotary instruments and electronic apex locators to save your natural tooth.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Single-sitting rotary endodontics with zero pain</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Electronic apex locators for precision canal disinfection</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Biocompatible 3D hermetic gutta-percha seal</li>
+                        <li><i class="fa-solid fa-circle-check"></i> High-strength crown placement to restore full bite</li>
+                    </ul>
+                </div>
+
+                <!-- 06. Pediatric Dentistry -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-child"></i></div>
+                        <span class="service-number">06</span>
+                    </div>
+                    <h3>Pediatric Dentistry</h3>
+                    <p>Warm, playful, and fear-free dental treatments tailored to protect young smiles and nurture lifelong healthy oral habits.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Friendly, anxiety-free atmosphere designed for children</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Cavity-preventing fluoride varnishes &amp; pit sealants</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Gentle milk tooth pulpectomies &amp; pediatric crowns</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Space maintainers &amp; early preventive orthodontic guidance</li>
+                    </ul>
+                </div>
+
+                <!-- 07. Dental Implants and Crowns -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
+                        <span class="service-number">07</span>
+                    </div>
+                    <h3>Dental Implants and Crowns</h3>
+                    <p>Gold-standard tooth replacement solutions engineered with premium Nobel Biocare titanium implants and lifelike crowns.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Nobel Biocare &amp; premium titanium implant systems</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Single tooth replacements to full-arch restorations</li>
+                        <li><i class="fa-solid fa-circle-check"></i> CAD/CAM monolithic zirconia &amp; ceramic crowns</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Preserves natural jawbone density &amp; adjacent teeth</li>
+                    </ul>
+                </div>
+
+                <!-- 08. Orthodontics (Braces and Clear Aligners) -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-teeth"></i></div>
+                        <span class="service-number">08</span>
+                    </div>
+                    <h3>Orthodontics (Braces and Clear Aligners)</h3>
+                    <p>Comprehensive alignment solutions to correct misaligned teeth, gaps, and bites with modern braces or virtually invisible aligners.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Clear invisible aligners for discreet smile correction</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Ceramic tooth-colored &amp; self-ligating metal braces</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Correction of crowding, gaps, overbites &amp; crossbites</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Digital progress monitoring &amp; personalized retainers</li>
+                    </ul>
+                </div>
+
+                <!-- 09. 3D Digital Smile Design and Smile Correction Simulation -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+                        <span class="service-number">09</span>
+                    </div>
+                    <h3>3D Digital Smile Design and Smile Correction Simulation</h3>
+                    <p>Cutting-edge digital aesthetic planning allowing you to visualize and preview your customized smile makeover before treatment starts.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Digital facial aesthetic mapping &amp; proportion analysis</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 3D virtual simulation with realistic before-and-after preview</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Custom-tailored tooth shape, shade, and biometric balance</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Predictable clinical outcomes with collaborative planning</li>
+                    </ul>
+                </div>
+
+                <!-- 10. Complete Dentures -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-teeth-open"></i></div>
+                        <span class="service-number">10</span>
+                    </div>
+                    <h3>Complete Dentures</h3>
+                    <p>Precision-molded full-arch prosthetics engineered for exceptional retention, natural aesthetics, and comfortable chewing.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> High-impact biocompatible acrylic resin construction</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Anatomical impression technique for superior suction &amp; fit</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Full lip and facial support to restore youthful contours</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Implant-supported overdenture options for rock-solid grip</li>
+                    </ul>
+                </div>
+
+                <!-- 11. Fixed Partial Dentures (Dental Bridges) -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-bridge"></i></div>
+                        <span class="service-number">11</span>
+                    </div>
+                    <h3>Fixed Partial Dentures (Dental Bridges)</h3>
+                    <p>Durable, non-removable prostheses anchored firmly to adjacent natural teeth or implants to bridge spaces left by missing teeth.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Fixed permanent restoration with 100% natural feel</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Anchored firmly to durable abutments or dental implants</li>
+                        <li><i class="fa-solid fa-circle-check"></i> High-strength metal-free zirconia &amp; aesthetic ceramic</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Prevents tilting, shifting &amp; extrusion of neighboring teeth</li>
+                    </ul>
+                </div>
+
+                <!-- 12. Laser Dentistry and Gum Care -->
+                <div class="service-box animate-up">
+                    <div class="service-box-header">
+                        <div class="service-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                        <span class="service-number">12</span>
+                    </div>
+                    <h3>Laser Dentistry and Gum Care</h3>
+                    <p>Advanced minimally invasive soft-tissue laser treatments offering bloodless precision, reduced swelling, and accelerated recovery.</p>
+                    <ul class="service-points">
+                        <li><i class="fa-solid fa-circle-check"></i> Minimally invasive laser surgery with virtually no bleeding</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Deep laser pocket sterilization for advanced gum disease</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Cosmetic gum re-contouring (gingivoplasty) for gummy smiles</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Accelerated tissue regeneration with minimal discomfort</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Synergy Section -->
+    <section id="synergy" class="synergy-section section-padding">
+        <div class="container">
+            <div class="section-header animate-up">
+                <span class="section-tag">Clinical Synergy</span>
+                <h2>Dual-Speciality Dental Precision</h2>
+                <p>Where surgical implantology harmonizes seamlessly with restorative aesthetics for predictable, lasting results.</p>
+            </div>
+            <div class="synergy-grid">
+                <div class="synergy-card animate-up">
+                    <span class="synergy-badge">Surgical &amp; Periodontal Expertise</span>
+                    <h3>Dr. P. Sheshadri</h3>
+                    <p>MDS Periodontics &amp; Implantology with 33+ years of clinical and academic mastery. Specializing in advanced tissue regeneration, Nobel Biocare implants, and precision periodontal surgery.</p>
+                    <ul class="synergy-features">
+                        <li><i class="fa-solid fa-circle-check"></i> 33+ Years Clinical &amp; Academic Experience</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Fellowship in Dental Implantology (Nobel Biocare)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Advanced Laser Periodontal Therapies</li>
+                    </ul>
+                </div>
+                <div class="synergy-card animate-up">
+                    <span class="synergy-badge">Restorative &amp; Aesthetic Excellence</span>
+                    <h3>Dr. R. Vatsala</h3>
+                    <p>Specialist in restorative solutions, cosmetic smile rehabilitation, and patient comfort. Delivering gentle, empathetic dental care for children and adults alike.</p>
+                    <ul class="synergy-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Comprehensive Smile Design &amp; Aesthetics</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Pain-Free Endodontic &amp; Restorative Treatments</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Preventative Family Dental Care</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about-section section-padding">
         <div class="container about-container">
-            <div class="about-image reveal-left">
-                <img src="assets/hero2.png" alt="Advanced Dental Technology">
-                <div class="experience-badge scale-up delay-2">
-                    <span class="years">10+</span>
+            <div class="about-image animate-fade">
+                <img src="assets/tech-bg.png" alt="Advanced Dental Technology">
+                <div class="experience-badge">
+                    <span class="years">33+</span>
                     <span class="text">Years of Excellence</span>
                 </div>
             </div>
-            <div class="about-text reveal-right delay-1">
+            <div class="about-text animate-up">
                 <span class="section-tag">Why Choose Us</span>
                 <h2>Dedicated to Speciality Care</h2>
-                <p>Srinivasa Dental Clinic is a premier Speciality Centre located in the heart of the city. We pride
-                    ourselves on offering advanced dental care using digital scanning and modern procedural techniques.
+                <p>Srinivasa Dental Clinic is a premier Speciality Centre located in Kuvempunagar, Mysuru. We pride
+                    ourselves on offering advanced dental care using digital diagnostics and modern procedural techniques.
                 </p>
                 <ul class="clinic-features">
-                    <li><i class="fa-solid fa-circle-check"></i> Certified Dental Specialists</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Former Professor &amp; HOD Led Clinic</li>
                     <li><i class="fa-solid fa-circle-check"></i> Advanced Dental Implants Center</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Sterilized & Hygienic Environment</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Patient-Centric Approach</li>
+                    <li><i class="fa-solid fa-circle-check"></i> 100% Sterilized &amp; Hygienic Environment</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Compassionate Patient-First Philosophy</li>
                 </ul>
-                <a href="about.html" class="btn btn-primary">Learn More About Us</a>
+                <a href="about.html" class="btn btn-primary">Meet Our Doctors &amp; Specialists</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="facilities-section section-padding">
+        <div class="container">
+            <div class="section-header animate-up">
+                <span class="section-tag">Modern Infrastructure</span>
+                <h2>State-of-the-Art Facilities</h2>
+                <p>Designed for supreme patient comfort, absolute sterility, and cutting-edge precision treatment.</p>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-card animate-up">
+                    <div class="facility-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                    <h3>Class-B Autoclave Sterilization</h3>
+                    <p>Rigorous multi-stage hospital-grade sterilization protocols ensuring zero cross-contamination.</p>
+                </div>
+                <div class="facility-card animate-up">
+                    <div class="facility-icon"><i class="fa-solid fa-x-ray"></i></div>
+                    <h3>Digital Imaging &amp; RVG</h3>
+                    <p>High-resolution low-radiation digital radiography for accurate diagnosis and implant planning.</p>
+                </div>
+                <div class="facility-card animate-up">
+                    <div class="facility-icon"><i class="fa-solid fa-chair"></i></div>
+                    <h3>Ergonomic Operatories</h3>
+                    <p>Ultra-comfortable dental chairs designed to reduce patient fatigue during extended procedures.</p>
+                </div>
+                <div class="facility-card animate-up">
+                    <div class="facility-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>Laser &amp; Piezo Units</h3>
+                    <p>Minimally invasive soft tissue laser and ultrasonic surgical equipment for faster healing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section section-padding">
+        <div class="container">
+            <div class="section-header animate-up">
+                <span class="section-tag">Patient Satisfaction</span>
+                <h2>Trusted by Over 10,000+ Patients</h2>
+                <p>Real stories and verified experiences from individuals who restored their smiles with us.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card animate-up">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Dr. Sheshadri is undoubtedly one of the finest implantologists in Mysuru. My implant procedure was painless and healed completely without any issues. Highly recommended!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar">R</div>
+                        <div>
+                            <div class="author-name">Ramesh K.</div>
+                            <div class="author-badge"><i class="fa-solid fa-circle-check"></i> Verified Patient</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card animate-up">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"The clinic is spotlessly clean and the equipment is top notch. Dr. Vatsala and Dr. Sheshadri explained every step of the treatment with utmost patience. Truly exceptional care."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Pooja Sharma</div>
+                            <div class="author-badge"><i class="fa-solid fa-circle-check"></i> Verified Patient</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card animate-up">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"33 years of experience really shows. I was terrified of gum surgery, but Dr. Sheshadri made it completely stress-free. Very grateful to the entire team at Srinivasa Dental Clinic."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">V</div>
+                        <div>
+                            <div class="author-name">Vijay M.</div>
+                            <div class="author-badge"><i class="fa-solid fa-circle-check"></i> Verified Patient</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section-padding">
+        <div class="container">
+            <div class="section-header animate-up">
+                <span class="section-tag">Got Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our treatments, consultations, and post-operative care.</p>
+            </div>
+            <div class="faq-wrap animate-up">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>Are dental implants permanent?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. With proper oral hygiene and regular dental checkups, titanium dental implants fuse directly into the jawbone (osseointegration) and can last a lifetime, functioning just like natural teeth.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is dental implant surgery painful?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. The procedure is performed under precision local anesthesia so you will feel no pain during treatment. Most patients report only mild tenderness following the procedure, which is easily managed with routine pain relief.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the clinic timings and consultation charges?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our OPD runs Monday through Saturday from 9:30 AM to 1:30 PM (Morning Session) and 5:00 PM to 8:30 PM (Evening Session). Sundays are reserved for emergencies on call. You can schedule an appointment by calling +91 94480 46136.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How often should I get my teeth cleaned and checked?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We recommend a professional cleaning and checkup every 6 months to detect any early signs of gum disease, cavities, or tartar accumulation before they require complex treatments.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Appointment/Contact Section -->
     <section id="contact" class="contact-section section-padding">
-        <div class="container contact-container">
-            <div class="contact-info reveal-left">
-                <h2>Say Goodbye to Dental Woes</h2>
-                <p>Schedule your consultation today and take the first step towards a healthier, brighter smile.</p>
-                <div class="info-items">
-                    <div class="info-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <h4>Our Location</h4>
-                            <p>#851, Panchamantra Road, Near Gnanaganga School, E&F Block, Kuvempunagar, Mysuru,
-                                Karnataka 570023</p>
+        <div class="container">
+            <div class="section-header animate-up" style="text-align: center; margin-bottom: 40px;">
+                <span class="section-tag">Direct Scheduling</span>
+                <h2>Book Your Priority Consultation</h2>
+                <p>Personalized specialist attention with transparent digital care plans and zero waiting time.</p>
+            </div>
+
+            <div class="concierge-booking-card animate-fade">
+                <!-- Left Panel: Clinical Concierge -->
+                <div class="concierge-sidebar">
+                    <div class="concierge-header">
+                        <h3 class="concierge-title">Clinical Concierge</h3>
+                        <p class="concierge-desc">Your appointment request is reviewed directly by our clinical coordinators. You will receive an instant digital appointment pass and confirmation on WhatsApp.</p>
+                    </div>
+
+                    <div class="concierge-perks">
+                        <div class="concierge-perk">
+                            <div class="perk-icon">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <div class="perk-info">
+                                <h4>Zero Waiting Queue</h4>
+                                <p>Allocated dedicated doctor attention</p>
+                            </div>
+                        </div>
+
+                        <div class="concierge-perk">
+                            <div class="perk-icon">
+                                <i class="fa-regular fa-file-lines"></i>
+                            </div>
+                            <div class="perk-info">
+                                <h4>Digital Treatment Plan</h4>
+                                <p>Clear estimates with photographic records</p>
+                            </div>
+                        </div>
+
+                        <div class="concierge-perk">
+                            <div class="perk-icon">
+                                <i class="fa-solid fa-stethoscope"></i>
+                            </div>
+                            <div class="perk-info">
+                                <h4>Direct Specialist Access</h4>
+                                <p>Consult directly with lead surgeons</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <h4>Call Us</h4>
-                            <p>+91 9448046136</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <h4>Email Us</h4>
-                            <p><a href="mailto:sheshadripp@gmail.com">sheshadripp@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fa-solid fa-clock"></i>
-                        <div>
-                            <h4>Working Hours</h4>
-                            <p>Mon - Sat: 10:00 AM - 8:00 PM</p>
-                        </div>
+
+                    <div class="concierge-desk-card">
+                        <span class="desk-label">DIRECT DESK HELPLINE</span>
+                        <a href="tel:+919448046136" class="desk-phone">+91 94480 46136</a>
+                        
+                        <span class="desk-label">OFFICIAL EMAIL</span>
+                        <a href="mailto:sheshadripp@gmail.com" class="desk-email">sheshadripp@gmail.com</a>
                     </div>
                 </div>
-            </div>
-            <div class="map-card reveal-right delay-2">
-                <iframe
-                    src="https://www.google.com/maps?q=Srinivasa%20Dental%20Clinic%20Kuvempu%20Nagara%20Mysuru%20851%20Panchamantra%20Road&output=embed"
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+
+                <!-- Right Panel: Booking Form -->
+                <div class="concierge-form-wrap">
+                    <form id="appointment-form" class="concierge-form" novalidate>
+                        <!-- Row 1: Full Name & Phone Number -->
+                        <div class="rf-row rf-row-2">
+                            <div class="rf-field">
+                                <label class="rf-label" for="rf-name">Full Name <span class="rf-req">*</span></label>
+                                <input type="text" id="rf-name" name="name" class="rf-input" placeholder="e.g. Anand Sharma" required>
+                            </div>
+                            <div class="rf-field">
+                                <label class="rf-label" for="rf-phone">Phone Number <span class="rf-req">*</span></label>
+                                <input type="tel" id="rf-phone" name="phone" class="rf-input" placeholder="e.g. +91 98765 43210" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Email Address (Optional) -->
+                        <div class="rf-row">
+                            <div class="rf-field">
+                                <label class="rf-label" for="rf-email">Email Address (Optional)</label>
+                                <input type="email" id="rf-email" name="email" class="rf-input" placeholder="e.g. anand@example.com">
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Department & Preferred Doctor (Enhanced Custom Dropdowns) -->
+                        <div class="rf-row rf-row-2">
+                            <!-- Department Custom Dropdown -->
+                            <div class="rf-field">
+                                <label class="rf-label">Department <span class="rf-req">*</span></label>
+                                <div class="custom-dropdown" id="dropdown-dept" data-target="rf-dept">
+                                    <div class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                                        <div class="dropdown-trigger-left">
+                                            <i class="fa-solid fa-tooth dropdown-trigger-icon"></i>
+                                            <span class="dropdown-selected-text">Dental Surgery &amp; Aesthetics</span>
+                                        </div>
+                                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                                    </div>
+                                    <div class="dropdown-menu" role="listbox">
+                                        <div class="dropdown-item selected" data-value="Dental Surgery & Aesthetics" role="option" aria-selected="true">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                                <div class="di-text">
+                                                    <span class="di-title">Dental Surgery &amp; Aesthetics</span>
+                                                    <span class="di-desc">Smile makeovers, veneers &amp; restorative precision</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Periodontics & Dental Implants" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-icon"><i class="fa-solid fa-tooth"></i></div>
+                                                <div class="di-text">
+                                                    <span class="di-title">Periodontics &amp; Dental Implants</span>
+                                                    <span class="di-desc">Nobel Biocare implants, bone graft &amp; gum regeneration</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Restorative Dentistry & Root Canal" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                                                <div class="di-text">
+                                                    <span class="di-title">Restorative Dentistry &amp; Root Canal</span>
+                                                    <span class="di-desc">Pain-free single-sitting endodontics &amp; crowns</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Laser Periodontics & Gum Surgery" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-icon"><i class="fa-solid fa-bolt"></i></div>
+                                                <div class="di-text">
+                                                    <span class="di-title">Laser Periodontics &amp; Gum Surgery</span>
+                                                    <span class="di-desc">Minimally invasive soft tissue laser therapies</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Orthodontics (Braces & Aligners)" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-icon"><i class="fa-solid fa-teeth-open"></i></div>
+                                                <div class="di-text">
+                                                    <span class="di-title">Orthodontics (Braces &amp; Aligners)</span>
+                                                    <span class="di-desc">Invisible teeth straightening &amp; smile aligners</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Pediatric & Family Dentistry" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                                                <div class="di-text">
+                                                    <span class="di-title">Pediatric &amp; Family Dentistry</span>
+                                                    <span class="di-desc">Gentle preventative dental care for kids &amp; adults</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Comprehensive Dental Checkup" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                                                <div class="di-text">
+                                                    <span class="di-title">Comprehensive Dental Checkup</span>
+                                                    <span class="di-desc">Digital X-rays &amp; full oral health evaluation</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="rf-dept" name="department" value="Dental Surgery & Aesthetics" required>
+                                </div>
+                            </div>
+
+                            <!-- Preferred Doctor Custom Dropdown -->
+                            <div class="rf-field">
+                                <label class="rf-label">Preferred Doctor <span class="rf-req">*</span></label>
+                                <div class="custom-dropdown" id="dropdown-doctor" data-target="rf-doctor">
+                                    <div class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                                        <div class="dropdown-trigger-left">
+                                            <i class="fa-solid fa-user-doctor dropdown-trigger-icon"></i>
+                                            <span class="dropdown-selected-text">Dr. P. Sheshadri (Periodontics)</span>
+                                        </div>
+                                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                                    </div>
+                                    <div class="dropdown-menu" role="listbox">
+                                        <div class="dropdown-item selected" data-value="Dr. P. Sheshadri (MDS - Periodontist & Implantologist)" data-display="Dr. P. Sheshadri (Periodontics)" role="option" aria-selected="true">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-avatar">PS</div>
+                                                <div class="di-text">
+                                                    <div class="di-title-row">
+                                                        <span class="di-title">Dr. P. Sheshadri</span>
+                                                        <span class="di-badge">33+ Yrs Exp</span>
+                                                    </div>
+                                                    <span class="di-desc">MDS Periodontics &amp; Implantology | Former Professor &amp; HOD</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Dr. R. Vatsala (Dental Surgeon & Restorative Specialist)" data-display="Dr. R. Vatsala (Restorative)" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-avatar">RV</div>
+                                                <div class="di-text">
+                                                    <div class="di-title-row">
+                                                        <span class="di-title">Dr. R. Vatsala</span>
+                                                        <span class="di-badge">Restorative</span>
+                                                    </div>
+                                                    <span class="di-desc">Dental Surgeon, Restorative Solutions &amp; Pediatric Care</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+
+                                        <div class="dropdown-item" data-value="Any Available Specialist" data-display="Any Available Specialist" role="option">
+                                            <div class="dropdown-item-content">
+                                                <div class="di-avatar di-avatar-any"><i class="fa-solid fa-hospital-user"></i></div>
+                                                <div class="di-text">
+                                                    <div class="di-title-row">
+                                                        <span class="di-title">Any Available Specialist</span>
+                                                        <span class="di-badge di-badge-fast">Fast Track</span>
+                                                    </div>
+                                                    <span class="di-desc">Immediate allocation with lead available on-duty dentist</span>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check di-check"></i>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="rf-doctor" name="doctor" value="Dr. P. Sheshadri (MDS - Periodontist & Implantologist)" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 4: Preferred Date -->
+                        <div class="rf-row">
+                            <div class="rf-field">
+                                <label class="rf-label" for="rf-date">Preferred Date <span class="rf-req">*</span></label>
+                                <input type="date" id="rf-date" name="date" class="rf-input rf-date" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 5: Preferred Time Slot -->
+                        <div class="rf-row rf-slots-row">
+                            <div class="rf-slot-header">
+                                <label class="rf-label mb-0">Preferred Time Slot <span class="rf-req">*</span></label>
+                                <div class="rf-timing-pill">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span id="rf-timing-text">OPD: 9:30 AM – 1:30 PM &amp; 5:00 PM – 8:30 PM</span>
+                                </div>
+                            </div>
+                            <div class="rf-slot-grid">
+                                <label class="rf-slot-card active" data-slot="morning">
+                                    <input type="radio" name="time_slot" value="Morning: 9:30AM – 1:30PM" checked class="rf-slot-radio">
+                                    <span class="rf-radio-circle"></span>
+                                    <span class="rf-slot-title">☀️ Morning: 9:30AM – 1:30PM</span>
+                                </label>
+                                <label class="rf-slot-card" data-slot="evening">
+                                    <input type="radio" name="time_slot" value="Evening: 5PM – 8:30PM" class="rf-slot-radio">
+                                    <span class="rf-radio-circle"></span>
+                                    <span class="rf-slot-title">🌙 Evening: 5PM – 8:30PM</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Row 6: Symptoms or Procedure Interest -->
+                        <div class="rf-row">
+                            <div class="rf-field">
+                                <label class="rf-label" for="rf-message">Symptoms or Procedure Interest</label>
+                                <textarea id="rf-message" name="message" class="rf-input rf-textarea" rows="3" placeholder="Briefly describe your concern (e.g., toothache, wisdom tooth, root canal, headache, spine pain, second opinion)..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Row 7: Submit Button -->
+                        <div class="rf-row">
+                            <button type="submit" id="rf-submit-btn" class="rf-submit-btn">
+                                <span>Confirm Consultation</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- Feedback Banner -->
+                        <div id="rf-success-banner" class="rf-success-banner">
+                            <div class="rf-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="rf-success-content">
+                                <h4>Consultation Request Received!</h4>
+                                <p id="rf-success-msg">Your priority consultation request has been logged. Our clinical coordinator will reach out directly on WhatsApp to confirm your pass.</p>
+                                <a id="rf-whatsapp-link" href="https://wa.me/919448046136" target="_blank" class="rf-whatsapp-btn">
+                                    <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Confirmation
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo" class="footer-logo">
-                <p>Providing premium dental care and advanced specialty treatments since 10+ years. Your smile is our
-                    priority.</p>
-                <p class="footer-contact-item"><i class="fa-solid fa-envelope"></i> <a
-                        href="mailto:sheshadripp@gmail.com">sheshadripp@gmail.com</a></p>
-                <p class="footer-contact-item" style="margin-top: 10px; font-size: 0.9rem; line-height: 1.5;"><i class="fa-solid fa-location-dot"></i> 851, Panchamantra Rd, near Gnanaganga School, E&F Block, Kuvempu Nagara, Mysuru, Karnataka 570023</p>
+        <div class="container">
+            <!-- Pre-Footer Action Ribbon -->
+            <div class="footer-cta-ribbon">
+                <div class="footer-cta-content">
+                    <div class="footer-cta-badge"><span class="status-dot"></span> Priority Clinical Appointments &amp; Second Opinions</div>
+                    <h3>Need Emergency Dental Care or an Expert Consultation?</h3>
+                    <p>Our senior specialists in Kuvempunagar are available for both booked consultations and emergency on-call care.</p>
+                </div>
+                <div class="footer-cta-actions">
+                    <a href="tel:+919448046136" class="btn-footer-call">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 94480 46136</span>
+                    </a>
+                    <a href="#contact" class="btn-footer-book">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Book Online</span>
+                    </a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-map">
-                <h4>Our Location</h4>
-                <div style="border-radius: 12px; overflow: hidden; height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid var(--border-color);">
-                    <iframe src="https://www.google.com/maps?q=Srinivasa%20Dental%20Clinic%20Kuvempu%20Nagara%20Mysuru%20851%20Panchamantra%20Road&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <!-- Main Footer 4-Column Grid -->
+            <div class="footer-grid">
+                <!-- Column 1: Brand & Credentials -->
+                <div class="footer-col footer-col-brand">
+                    <a href="index.html" class="footer-logo-link">
+                        <div class="footer-logo-box">
+                            <img src="assets/logo.png" alt="Srinivasa Dental Clinic Logo" class="footer-logo">
+                        </div>
+                    </a>
+                    <p class="footer-tagline">Srinivasa Dental Clinic &amp; Implant Centre</p>
+                    <p class="footer-desc">Mysuru's premier center for advanced dental implants, laser periodontics, and complete smile care led by Dr. P. Sheshadri and Dr. R. Vatsala with 33+ years of clinical excellence.</p>
+                    <div class="footer-trust-chips">
+                        <span class="ft-chip"><i class="fa-solid fa-award"></i> 33+ Yrs Legacy</span>
+                        <span class="ft-chip"><i class="fa-solid fa-certificate"></i> Reg. Specialists</span>
+                        <span class="ft-chip"><i class="fa-solid fa-shield-halved"></i> 100% Sterile RVG</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/919448046136" target="_blank" rel="noopener" aria-label="WhatsApp Us"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+919448046136" aria-label="Call Doctor"><i class="fa-solid fa-phone"></i></a>
+                        <a href="https://maps.google.com/?q=Srinivasa+Dental+Clinic+Kuvempunagar+Mysuru+851+Panchamantra+Road" target="_blank" rel="noopener" aria-label="Google Maps Location"><i class="fa-solid fa-location-dot"></i></a>
+                        <a href="mailto:sheshadripp@gmail.com" aria-label="Send Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Clinical Treatments -->
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-heading">Clinical Treatments</h4>
+                    <ul class="footer-menu">
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Digital Dental RVG X-Rays</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Advanced Dental Implants</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Periodontal Gum Therapy</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Oral &amp; Maxillofacial Surgery</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Micro-Endodontic Root Canals</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Aesthetic Smile Designing</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Painless Teeth Extractions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: OPD Schedule & Doctors -->
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-heading">OPD Schedule</h4>
+                    <div class="footer-hours-card">
+                        <div class="hours-row">
+                            <span class="hours-day">Mon – Sat Morning:</span>
+                            <span class="hours-time">9:30 AM – 1:30 PM</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Mon – Sat Evening:</span>
+                            <span class="hours-time">5:00 PM – 8:30 PM</span>
+                        </div>
+                        <div class="hours-row highlight-sunday">
+                            <span class="hours-day">Sunday:</span>
+                            <span class="hours-time">Emergency On-Call</span>
+                        </div>
+                    </div>
+                    <div class="footer-doctors-summary">
+                        <div class="f-doc-item">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <div>
+                                <strong>Dr. P. Sheshadri (MDS)</strong>
+                                <span>Periodontist &amp; Implantologist</span>
+                            </div>
+                        </div>
+                        <div class="f-doc-item">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <div>
+                                <strong>Dr. R. Vatsala</strong>
+                                <span>Dental Surgeon &amp; Consultant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4: Location & Contact -->
+                <div class="footer-col footer-col-contact">
+                    <h4 class="footer-heading">Clinic Location</h4>
+                    <div class="footer-contact-list">
+                        <div class="f-contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <span class="fc-label">Address</span>
+                                <p class="fc-val">851, Panchamantra Rd, Near Gnanaganga School, E&amp;F Block, Kuvempunagar, Mysuru, Karnataka 570023</p>
+                            </div>
+                        </div>
+                        <div class="f-contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <span class="fc-label">Appointments &amp; Help Desk</span>
+                                <a href="tel:+919448046136" class="fc-val fc-link">+91 94480 46136</a>
+                            </div>
+                        </div>
+                        <div class="f-contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <span class="fc-label">Email</span>
+                                <a href="mailto:sheshadripp@gmail.com" class="fc-val fc-link">sheshadripp@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Srinivasa+Dental+Clinic+Kuvempunagar+Mysuru+851+Panchamantra+Road" target="_blank" rel="noopener" class="footer-map-btn">
+                        <i class="fa-solid fa-diamond-turn-right"></i> Get Directions on Google Maps
+                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Footer Bottom Sub-Bar -->
         <div class="footer-bottom">
-            <p>&copy; 2026 Srinivasa Dental Clinic. All Rights Reserved.</p>
-            <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.8;">Powered By : <a
-                    href="https://www.navabharathtechnologies.com/" target="_blank"
-                    onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Navabharath
-                    Technologies</a></p>
+            <div class="container footer-bottom-container">
+                <p class="footer-copy">&copy; 2026 Srinivasa Dental Clinic. All Rights Reserved. Committed to Healthy Smiles Since 1993.</p>
+                <div class="footer-bottom-links">
+                    <a href="#hero">Home</a>
+                    <span class="sep">•</span>
+                    <a href="about.html">About Doctors</a>
+                    <span class="sep">•</span>
+                    <a href="#services">Services</a>
+                    <span class="sep">•</span>
+                    <a href="#synergy">Synergy</a>
+                    <span class="sep">•</span>
+                    <a href="#contact">Contact</a>
+                </div>
+                <p class="footer-powered">Powered By: <a href="https://www.navabharathtechnologies.com/" target="_blank" rel="noopener">Navabharath Technologies</a></p>
+            </div>
         </div>
     </footer>
 
-    <div class="back-to-top" id="back-to-top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </div>
+    <!-- Mobile Sticky Quick-Action Bar (Phone View Only) -->
+    <aside class="mobile-bottom-bar" aria-label="Mobile Quick Actions">
+        <a href="tel:+919448046136" class="mob-bar-btn mob-bar-call" aria-label="Call Doctor">
+            <i class="fa-solid fa-phone"></i>
+            <span>Call OPD</span>
+        </a>
+        <a href="https://wa.me/919448046136" target="_blank" rel="noopener" class="mob-bar-btn mob-bar-wa" aria-label="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="#contact" class="mob-bar-btn mob-bar-book" aria-label="Book Consultation">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Book Visit</span>
+        </a>
+    </aside>
 
     <script src="script.js"></script>
 </body>
