@@ -549,11 +549,199 @@ h2 {
     position: relative;
 }
 
-.hero-image-card {
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+/* ========================================================
+   HERO AUTO CAROUSEL SYSTEM
+   ======================================================== */
+.hero-carousel-container {
     position: relative;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(17, 29, 61, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.35);
+    background: #0f172a;
+    aspect-ratio: 16 / 11;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    user-select: none;
+}
+
+[data-theme="dark"] .hero-carousel-container {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.hero-carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Subtle gradient at bottom for badge contrast */
+.hero-slide::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.35) 100%);
+    pointer-events: none;
+}
+
+/* Slide Badge */
+.hero-slide-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(17, 29, 61, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #FFFFFF;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.hero-slide-badge i {
+    color: #60A5FA;
+    font-size: 0.85rem;
+}
+
+/* Floating Live Tour Pill */
+.hero-live-pill {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: rgba(17, 29, 61, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 3;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    background: #10B981;
+    border-radius: 50%;
+    display: inline-block;
+    animation: livePulse 2s infinite;
+}
+
+@keyframes livePulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Carousel Navigation Arrows */
+.hero-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #1E2D56;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 4;
+    font-size: 0.85rem;
+    transition: all 0.25s ease;
+    opacity: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-carousel-container:hover .hero-carousel-arrow {
+    opacity: 1;
+}
+
+.hero-prev-btn {
+    left: 14px;
+}
+
+.hero-next-btn {
+    right: 14px;
+}
+
+.hero-carousel-arrow:hover {
+    background: #3B82F6;
+    color: #FFFFFF;
+    border-color: #3B82F6;
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* Dots / Indicators */
+.hero-carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    z-index: 4;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.hero-dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: #3B82F6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
 }
 
 /* Services Section */
@@ -1914,24 +2102,74 @@ h2 {
 
     /* Hero Section Phone View */
     .hero-section {
-        padding: 115px 0 45px;
+        padding: 155px 0 50px;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 28px;
         text-align: center;
     }
 
     .hero-image-wrapper {
         order: -1;
+        margin-top: 10px;
+        margin-bottom: 12px;
     }
 
-    .hero-image-card {
-        max-width: 400px;
+    .hero-image-card,
+    .hero-carousel-container {
+        max-width: 440px;
+        width: 100%;
         margin: 0 auto;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        border-radius: 22px;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+    }
+
+    .hero-carousel-arrow {
+        opacity: 0.85;
+        width: 34px;
+        height: 34px;
+        font-size: 0.78rem;
+    }
+
+    .hero-prev-btn {
+        left: 10px;
+    }
+
+    .hero-next-btn {
+        right: 10px;
+    }
+
+    .hero-slide-badge {
+        bottom: 12px;
+        left: 12px;
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+
+    .hero-carousel-dots {
+        bottom: 12px;
+        right: 12px;
+        padding: 4px 8px;
+        gap: 5px;
+    }
+
+    .hero-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .hero-dot.active {
+        width: 16px;
+    }
+
+    .hero-live-pill {
+        top: 12px;
+        right: 12px;
+        font-size: 0.68rem;
+        padding: 4px 9px;
     }
 
     .hero-text h1 {
@@ -3197,6 +3435,10 @@ header, section, footer, .doctor-switcher-wrap {
 
     .btn-call-now {
         padding: 6px 10px;
+    }
+
+    .hero-section {
+        padding: 145px 0 40px;
     }
 
     .hero-text h1 {
