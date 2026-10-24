@@ -356,4 +356,95 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 9. Synergy Mobile Carousel System
+    const synergyTrack = document.getElementById('synergy-track');
+    const synergyTabs = document.querySelectorAll('.synergy-tab-btn');
+    const synergyDots = document.querySelectorAll('.synergy-dot');
+    const synergyPrev = document.getElementById('synergy-prev');
+    const synergyNext = document.getElementById('synergy-next');
+
+    if (synergyTrack) {
+        function getSynergyCards() {
+            return synergyTrack.querySelectorAll('.synergy-card');
+        }
+
+        function scrollToSynergySlide(index) {
+            const cards = getSynergyCards();
+            if (cards[index]) {
+                const cardLeft = cards[index].offsetLeft - synergyTrack.offsetLeft;
+                synergyTrack.scrollTo({
+                    left: cardLeft,
+                    behavior: 'smooth'
+                });
+                updateSynergyUI(index);
+            }
+        }
+
+        function updateSynergyUI(index) {
+            synergyTabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            synergyDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        synergyTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const idx = parseInt(tab.getAttribute('data-index'), 10) || 0;
+                scrollToSynergySlide(idx);
+            });
+        });
+
+        synergyDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const idx = parseInt(dot.getAttribute('data-index'), 10) || 0;
+                scrollToSynergySlide(idx);
+            });
+        });
+
+        if (synergyPrev) {
+            synergyPrev.addEventListener('click', () => {
+                scrollToSynergySlide(0);
+            });
+        }
+
+        if (synergyNext) {
+            synergyNext.addEventListener('click', () => {
+                scrollToSynergySlide(1);
+            });
+        }
+
+        // Detect touch swipe / scroll position change
+        let scrollTimeout;
+        synergyTrack.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollLeft = synergyTrack.scrollLeft;
+                const totalWidth = synergyTrack.scrollWidth - synergyTrack.clientWidth;
+                if (totalWidth > 0) {
+                    const ratio = scrollLeft / totalWidth;
+                    const activeIndex = ratio > 0.5 ? 1 : 0;
+                    updateSynergyUI(activeIndex);
+                }
+            }, 60);
+        }, { passive: true });
+
+        // Auto-select doctor in booking form when clicking card CTA
+        document.querySelectorAll('.btn-synergy-book').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const docKey = btn.getAttribute('data-select-doc');
+                const doctorDropdown = document.getElementById('dropdown-doctor');
+                if (doctorDropdown) {
+                    const targetMatch = docKey === 'sheshadri' ? 'Sheshadri' : 'Vatsala';
+                    const targetItem = doctorDropdown.querySelector(`.dropdown-item[data-value*="${targetMatch}"]`);
+                    if (targetItem) {
+                        targetItem.click();
+                    }
+                }
+            });
+        });
+    }
 });
+
