@@ -1604,6 +1604,32 @@ h2 {
     color: #FFFFFF;
 }
 
+/* Sunday Date Notice */
+.rf-date-notice {
+    display: none;
+    align-items: center;
+    gap: 9px;
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: #FEF2F2;
+    border: 1.5px solid #FCA5A5;
+    border-radius: 10px;
+    color: #DC2626;
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease;
+}
+
+.rf-date-notice i {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.rf-date-notice.show {
+    display: flex;
+}
+
 /* Success Card / Notification */
 .rf-success-banner {
     display: none;
@@ -3353,6 +3379,12 @@ header, section, footer, .doctor-switcher-wrap {
 [data-theme="dark"] .rf-submit-btn:hover {
     background: #2563EB;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="dark"] .rf-date-notice {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.35);
+    color: #F87171;
 }
 
 @media (max-width: 1080px) {

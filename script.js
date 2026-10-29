@@ -16,21 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTime = hours + minutes / 60;
 
         if (day === 0) {
-            opdStatusText.textContent = "OPD Closed Today (Sunday) | Emergency On Call";
+            opdStatusText.textContent = "Clinic Closed Today (Sunday Holiday - No OPD & Emergency)";
             const dot = document.querySelector('.status-dot');
-            if (dot) dot.style.backgroundColor = '#F59E0B';
+            if (dot) {
+                dot.style.backgroundColor = '#EF4444';
+                dot.style.boxShadow = '0 0 0 0 rgba(239, 68, 68, 0.7)';
+            }
             return;
         }
 
-        // Mon - Sat: 9:30 AM - 1:30 PM (9.5 to 13.5) & 5:00 PM - 8:30 PM (17.0 to 20.5)
-        if (currentTime >= 9.5 && currentTime <= 13.5) {
-            opdStatusText.textContent = "Morning OPD Active Now | Kuvempunagar (Until 1:30 PM)";
-        } else if (currentTime > 13.5 && currentTime < 17.0) {
-            opdStatusText.textContent = "Evening OPD Starts at 5:00 PM | Kuvempunagar";
-        } else if (currentTime >= 17.0 && currentTime <= 20.5) {
-            opdStatusText.textContent = "Evening OPD Active Now | Kuvempunagar (Until 8:30 PM)";
+        // Mon - Sat: 10:00 AM - 1:00 PM (10.0 to 13.0) & 4:30 PM - 9:00 PM (16.5 to 21.0)
+        if (currentTime >= 10.0 && currentTime <= 13.0) {
+            opdStatusText.textContent = "Morning OPD Active Now | Kuvempunagar (Until 1:00 PM)";
+        } else if (currentTime > 13.0 && currentTime < 16.5) {
+            opdStatusText.textContent = "Evening OPD Starts at 4:30 PM | Kuvempunagar";
+        } else if (currentTime >= 16.5 && currentTime <= 21.0) {
+            opdStatusText.textContent = "Evening OPD Active Now | Kuvempunagar (Until 9:00 PM)";
         } else {
-            opdStatusText.textContent = "Morning OPD Active at 9:30 AM | Kuvempunagar";
+            opdStatusText.textContent = "Morning OPD Active at 10:00 AM | Kuvempunagar";
         }
     }
     updateOPDStatus();
@@ -137,8 +140,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 7. Clinical Concierge Booking Form Handling
     if (appointmentForm) {
-        // A. Setup Date Picker min & default today
+        // A. Setup Date Picker min & default today (skipping Sundays)
         const dateInput = document.getElementById('rf-date');
+        const dateNotice = document.getElementById('rf-date-notice');
+
+        function getNextValidDate(d) {
+            const date = new Date(d);
+            // If Sunday (0), move forward to Monday (+1 day)
+            if (date.getDay() === 0) {
+                date.setDate(date.getDate() + 1);
+            }
+            const yyyy = date.getFullYear();
+            const mm = String(date.getMonth() + 1).padStart(2, '0');
+            const dd = String(date.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
         if (dateInput) {
             const today = new Date();
             const yyyy = today.getFullYear();
@@ -147,8 +164,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const todayStr = `${yyyy}-${mm}-${dd}`;
             dateInput.min = todayStr;
             if (!dateInput.value) {
-                dateInput.value = todayStr;
+                dateInput.value = getNextValidDate(today);
             }
+
+            // Sunday holiday validator
+            const validateSundayDate = () => {
+                if (!dateInput.value) return;
+                const chosen = new Date(dateInput.value + 'T00:00:00');
+                if (!isNaN(chosen.getTime()) && chosen.getDay() === 0) {
+                    if (dateNotice) dateNotice.classList.add('show');
+                    // Automatically adjust date to Monday
+                    setTimeout(() => {
+                        dateInput.value = getNextValidDate(chosen);
+                    }, 1400);
+                } else {
+                    if (dateNotice) dateNotice.classList.remove('show');
+                }
+            };
+
+            dateInput.addEventListener('change', validateSundayDate);
+            dateInput.addEventListener('input', validateSundayDate);
         }
 
         // B. Time Slot Selection Card Toggle
@@ -229,11 +264,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Dynamic Doctor Timing updates
                     if (targetInputId === 'rf-doctor' && timingText) {
                         if (val.includes('Sheshadri')) {
-                            timingText.textContent = 'Dr. Sheshadri: 9:30 AM – 1:30 PM & 5:00 PM – 8:30 PM';
+                            timingText.textContent = 'Dr. Sheshadri: 10:00 AM – 1:00 PM & 4:30 PM – 9:00 PM';
                         } else if (val.includes('Vatsala')) {
-                            timingText.textContent = 'Dr. Vatsala: 9:30 AM – 1:30 PM & 5:00 PM – 8:30 PM';
+                            timingText.textContent = 'Dr. Vatsala: 10:00 AM – 1:00 PM & 4:30 PM – 9:00 PM';
                         } else {
-                            timingText.textContent = 'OPD: 9:30 AM – 1:30 PM & 5:00 PM – 8:30 PM';
+                            timingText.textContent = 'OPD: 10:00 AM – 1:00 PM & 4:30 PM – 9:00 PM';
                         }
                     }
 
@@ -277,6 +312,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Sunday Holiday validation: Block submission if a Sunday is selected
+            if (chosenDateInput && chosenDateInput.value) {
+                const selectedDate = new Date(chosenDateInput.value + 'T00:00:00');
+                if (selectedDate.getDay() === 0) {
+                    if (dateNotice) {
+                        dateNotice.classList.add('show');
+                        dateNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                    chosenDateInput.focus();
+                    return;
+                }
+            }
+
             const originalBtnHtml = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span>Processing Consultation...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
@@ -315,13 +363,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 appointmentForm.reset();
-                // Restore default date
+                // Restore default date (skipping Sunday)
                 if (dateInput) {
-                    const today = new Date();
-                    const yyyy = today.getFullYear();
-                    const mm = String(today.getMonth() + 1).padStart(2, '0');
-                    const dd = String(today.getDate()).padStart(2, '0');
-                    dateInput.value = `${yyyy}-${mm}-${dd}`;
+                    dateInput.value = getNextValidDate(new Date());
+                }
+                if (dateNotice) {
+                    dateNotice.classList.remove('show');
                 }
                 // Restore first active slot
                 slotCards.forEach((c, idx) => {

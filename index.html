@@ -8,7 +8,7 @@
     <meta name="description"
         content="Srinivasa Dental Clinic &amp; Implant Centre – Top-rated dental clinic in Kuvempunagar, Mysuru. Specializing in advanced dental implants, laser periodontics, root canals, and cosmetic smile care with 33+ years of clinical excellence.">
     <meta name="keywords"
-        content="best dental clinic, dental clinic near me, best dentist near me, dental clinic in mysuru, dental clinic kuvempunagar, best dental clinic in mysuru, dental implants mysuru, dentist in mysuru, dr p sheshadri, dr r vatsala, srinivasa dental clinic, root canal treatment mysuru, cosmetic dentistry mysuru, teeth whitening mysuru, pediatric dentist mysuru, emergency dental clinic mysuru">
+        content="best dental clinic, dental clinic near me, best dentist near me, dental clinic in mysuru, dental clinic kuvempunagar, best dental clinic in mysuru, dental implants mysuru, dentist in mysuru, dr p sheshadri, dr r vatsala, srinivasa dental clinic, root canal treatment mysuru, cosmetic dentistry mysuru, teeth whitening mysuru, pediatric dentist mysuru, specialist dental clinic mysuru">
     <meta name="author" content="Dr. P. Sheshadri (MDS)">
     <meta name="robots" content="index, follow">
 
@@ -39,14 +39,14 @@
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "09:30",
-          "closes": "13:30"
+          "opens": "10:00",
+          "closes": "13:00"
         },
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "17:00",
-          "closes": "20:30"
+          "opens": "16:30",
+          "closes": "21:00"
         }
       ],
       "medicalSpecialty": ["Dentistry", "Periodontics", "Implantology"]
@@ -104,7 +104,7 @@
             <div class="header-container topbar-container">
                 <div class="topbar-status">
                     <span class="status-dot"></span>
-                    <span id="opd-status-text">Morning OPD Active Now | Kuvempunagar (Until 1:30 PM)</span>
+                    <span id="opd-status-text">Morning OPD Active Now | Kuvempunagar (Until 1:00 PM)</span>
                 </div>
                 <div class="topbar-right">
                     <a href="tel:+919448046136" class="topbar-link">
@@ -117,7 +117,7 @@
                     </a>
                     <div class="topbar-link topbar-hours">
                         <i class="fa-regular fa-clock"></i>
-                        <span>Mon - Sat: 9:30AM - 1:30PM &amp; 5PM - 8:30PM</span>
+                        <span>Mon - Sat: 10:00AM - 1:00PM &amp; 4:30PM - 9:00PM</span>
                     </div>
                 </div>
             </div>
@@ -189,8 +189,8 @@
                         <span class="stat-label">Happy Patients</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Emergency Care</span>
+                        <span class="stat-number">6 Days</span>
+                        <span class="stat-label">OPD Mon – Sat</span>
                     </div>
                 </div>
             </div>
@@ -690,7 +690,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Our OPD runs Monday through Saturday from 9:30 AM to 1:30 PM (Morning Session) and 5:00 PM to 8:30 PM (Evening Session). Sundays are reserved for emergencies on call. You can schedule an appointment by calling +91 94480 46136.</p>
+                        <p>Our OPD runs Monday through Saturday from 10:00 AM to 1:00 PM (Morning Session) and 4:30 PM to 9:00 PM (Evening Session). Sundays are fully closed (Weekly Holiday — No OPD or Emergency visits). You can schedule your consultation for Monday through Saturday by calling +91 94480 46136 or via our online booking form.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -944,8 +944,12 @@
                         <!-- Row 4: Preferred Date -->
                         <div class="rf-row">
                             <div class="rf-field">
-                                <label class="rf-label" for="rf-date">Preferred Date <span class="rf-req">*</span></label>
+                                <label class="rf-label" for="rf-date">Preferred Date <span class="rf-req">*</span> <span style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted); margin-left: 6px;">(Mon – Sat only)</span></label>
                                 <input type="date" id="rf-date" name="date" class="rf-input rf-date" required>
+                                <div id="rf-date-notice" class="rf-date-notice">
+                                    <i class="fa-solid fa-calendar-xmark"></i>
+                                    <span>Sundays are Clinic Holidays (Closed / No OPD &amp; No Emergency). Please choose Monday to Saturday.</span>
+                                </div>
                             </div>
                         </div>
 
@@ -955,19 +959,19 @@
                                 <label class="rf-label mb-0">Preferred Time Slot <span class="rf-req">*</span></label>
                                 <div class="rf-timing-pill">
                                     <i class="fa-regular fa-clock"></i>
-                                    <span id="rf-timing-text">OPD: 9:30 AM – 1:30 PM &amp; 5:00 PM – 8:30 PM</span>
+                                    <span id="rf-timing-text">OPD: 10:00 AM – 1:00 PM &amp; 4:30 PM – 9:00 PM</span>
                                 </div>
                             </div>
                             <div class="rf-slot-grid">
                                 <label class="rf-slot-card active" data-slot="morning">
-                                    <input type="radio" name="time_slot" value="Morning: 9:30AM – 1:30PM" checked class="rf-slot-radio">
+                                    <input type="radio" name="time_slot" value="Morning: 10:00AM – 1:00PM" checked class="rf-slot-radio">
                                     <span class="rf-radio-circle"></span>
-                                    <span class="rf-slot-title">☀️ Morning: 9:30AM – 1:30PM</span>
+                                    <span class="rf-slot-title">☀️ Morning: 10:00AM – 1:00PM</span>
                                 </label>
                                 <label class="rf-slot-card" data-slot="evening">
-                                    <input type="radio" name="time_slot" value="Evening: 5PM – 8:30PM" class="rf-slot-radio">
+                                    <input type="radio" name="time_slot" value="Evening: 4:30PM – 9:00PM" class="rf-slot-radio">
                                     <span class="rf-radio-circle"></span>
-                                    <span class="rf-slot-title">🌙 Evening: 5PM – 8:30PM</span>
+                                    <span class="rf-slot-title">🌙 Evening: 4:30PM – 9:00PM</span>
                                 </label>
                             </div>
                         </div>
@@ -1051,7 +1055,7 @@
                         </div>
                         <div class="f-contact-item">
                             <i class="fa-regular fa-clock"></i>
-                            <p class="fc-val">Mon – Sat: 9:30 AM – 1:30 PM &amp; 5:00 PM – 8:30 PM<br><span style="color: #94A3B8; font-size: 0.78rem;">(Sunday Emergency On-Call)</span></p>
+                            <p class="fc-val">Mon – Sat: 10:00 AM – 1:00 PM &amp; 4:30 PM – 9:00 PM<br><span style="color: #EF4444; font-size: 0.78rem; font-weight: 600;">(Sunday Holiday - Fully Closed)</span></p>
                         </div>
                     </div>
                 </div>
