@@ -14,9 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const hours = now.getHours();
         const minutes = now.getMinutes();
         const currentTime = hours + minutes / 60;
+        const isMobile = window.innerWidth <= 540;
 
         if (day === 0) {
-            opdStatusText.textContent = "Clinic Closed Today (Sunday Holiday - No OPD & Emergency)";
+            opdStatusText.textContent = isMobile ? "Closed Today (Sunday Holiday)" : "Clinic Closed Today (Sunday Holiday - No OPD & Emergency)";
             const dot = document.querySelector('.status-dot');
             if (dot) {
                 dot.style.backgroundColor = '#EF4444';
@@ -27,25 +28,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Mon - Sat: 10:00 AM - 1:00 PM (10.0 to 13.0) & 4:30 PM - 9:00 PM (16.5 to 21.0)
         if (currentTime >= 10.0 && currentTime <= 13.0) {
-            opdStatusText.textContent = "Morning OPD Active Now | Kuvempunagar (Until 1:00 PM)";
+            opdStatusText.textContent = isMobile ? "Morning OPD Active (Until 1 PM)" : "Morning OPD Active Now | Kuvempunagar (Until 1:00 PM)";
         } else if (currentTime > 13.0 && currentTime < 16.5) {
-            opdStatusText.textContent = "Evening OPD Starts at 4:30 PM | Kuvempunagar";
+            opdStatusText.textContent = isMobile ? "Evening OPD Starts 4:30 PM" : "Evening OPD Starts at 4:30 PM | Kuvempunagar";
         } else if (currentTime >= 16.5 && currentTime <= 21.0) {
-            opdStatusText.textContent = "Evening OPD Active Now | Kuvempunagar (Until 9:00 PM)";
+            opdStatusText.textContent = isMobile ? "Evening OPD Active (Until 9 PM)" : "Evening OPD Active Now | Kuvempunagar (Until 9:00 PM)";
         } else {
-            opdStatusText.textContent = "Morning OPD Active at 10:00 AM | Kuvempunagar";
+            opdStatusText.textContent = isMobile ? "Morning OPD at 10:00 AM" : "Morning OPD Active at 10:00 AM | Kuvempunagar";
         }
     }
     updateOPDStatus();
+    window.addEventListener('resize', updateOPDStatus);
+    setInterval(updateOPDStatus, 60000);
 
-    // 2. Sticky Header on Scroll
+    // 2. Sticky Header & Mobile Auto-Hide on Scroll
+    let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollDeltaThreshold = 8;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-            if (siteHeader) siteHeader.classList.add('scrolled');
+        if (!siteHeader) return;
+        const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const isMobile = window.innerWidth <= 768;
+
+        // Scrolled styling class (for topbar hide & elevated shadow)
+        if (currentScrollY > 40) {
+            siteHeader.classList.add('scrolled');
         } else {
-            if (siteHeader) siteHeader.classList.remove('scrolled');
+            siteHeader.classList.remove('scrolled');
         }
-    });
+
+        // Mobile header auto-hide behavior
+        if (isMobile) {
+            // If the mobile navigation menu is currently open, keep header visible
+            if (menuWrap && menuWrap.classList.contains('active')) {
+                siteHeader.classList.remove('header-hidden');
+                lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+                return;
+            }
+
+            if (currentScrollY <= 25) {
+                // At the top of the page: always visible
+                siteHeader.classList.remove('header-hidden');
+            } else if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY) > scrollDeltaThreshold) {
+                // Scrolling down: header disappears
+                siteHeader.classList.add('header-hidden');
+            } else if (lastScrollY - currentScrollY > scrollDeltaThreshold) {
+                // Scrolling up: header smoothly reappears
+                siteHeader.classList.remove('header-hidden');
+            }
+        } else {
+            // Always visible on desktop
+            siteHeader.classList.remove('header-hidden');
+        }
+
+        lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+    }, { passive: true });
 
     // 3. Mobile Menu Toggle
     if (mobileMenu && menuWrap) {
@@ -54,6 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
             menuWrap.classList.toggle('active');
             mobileMenu.classList.toggle('is-active');
             document.body.classList.toggle('mobile-menu-open');
+            if (menuWrap.classList.contains('active')) {
+                siteHeader.classList.remove('header-hidden');
+            }
         });
 
         // Auto close when any nav link is tapped on mobile
@@ -63,6 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuWrap.classList.remove('active');
                 mobileMenu.classList.remove('is-active');
                 document.body.classList.remove('mobile-menu-open');
+                if (window.innerWidth <= 768) {
+                    siteHeader.classList.add('header-hidden');
+                }
             });
         });
 
@@ -325,39 +368,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            const patientName = nameInput.value.trim();
+            const patientPhone = phoneInput.value.trim();
+            const patientDept = deptInput ? deptInput.value : 'General';
+            const patientDoctor = doctorInput ? doctorInput.value : 'Specialist';
+            const patientDate = chosenDateInput ? chosenDateInput.value : 'Upcoming';
+            const patientSlot = chosenSlot ? chosenSlot.value : 'Morning';
+            const patientMsg = messageInput ? messageInput.value.trim() : '';
+
+            // Construct WhatsApp Consultation Request message (Request only, not confirmed)
+            const waText = encodeURIComponent(
+                `Hello Srinivasa Dental Clinic, I would like to request an appointment consultation.\n\n` +
+                `*Patient Name:* ${patientName}\n` +
+                `*Phone:* ${patientPhone}\n` +
+                `*Department:* ${patientDept}\n` +
+                `*Preferred Doctor:* ${patientDoctor}\n` +
+                `*Requested Date:* ${patientDate}\n` +
+                `*Requested Slot:* ${patientSlot}` +
+                (patientMsg ? `\n*Symptoms / Concern:* ${patientMsg}` : '') +
+                `\n\n*(Note: This is a consultation request. Please verify doctor availability and confirm my appointment.)*`
+            );
+            const waUrl = `https://wa.me/919448046136?text=${waText}`;
+
+            // Directly trigger WhatsApp with pre-filled patient details
+            window.open(waUrl, '_blank');
+
             const originalBtnHtml = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Processing Consultation...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            submitBtn.innerHTML = '<span>Sending Request to WhatsApp...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
 
             setTimeout(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnHtml;
 
-                const patientName = nameInput.value.trim();
-                const patientPhone = phoneInput.value.trim();
-                const patientDept = deptInput ? deptInput.value : 'General';
-                const patientDoctor = doctorInput ? doctorInput.value : 'Specialist';
-                const patientDate = chosenDateInput ? chosenDateInput.value : 'Upcoming';
-                const patientSlot = chosenSlot ? chosenSlot.value : 'Morning';
-                const patientMsg = messageInput ? messageInput.value.trim() : '';
-
                 if (successBanner) {
                     successBanner.classList.add('show');
                     if (successMsg) {
-                        successMsg.textContent = `Thank you, ${patientName}! Your priority consultation with ${patientDoctor.split('(')[0].trim()} on ${patientDate} (${patientSlot}) is registered.`;
-                    }
-                    if (whatsappLink) {
-                        const waText = encodeURIComponent(
-                            `Hello Srinivasa Dental Clinic, I have submitted an appointment request.\n\n` +
-                            `*Patient Name:* ${patientName}\n` +
-                            `*Phone:* ${patientPhone}\n` +
-                            `*Department:* ${patientDept}\n` +
-                            `*Preferred Doctor:* ${patientDoctor}\n` +
-                            `*Date:* ${patientDate}\n` +
-                            `*Slot:* ${patientSlot}` +
-                            (patientMsg ? `\n*Concern:* ${patientMsg}` : '')
-                        );
-                        whatsappLink.href = `https://wa.me/919448046136?text=${waText}`;
+                        const shortSlot = patientSlot.includes('Morning') ? 'Morning' : (patientSlot.includes('Evening') ? 'Evening' : patientSlot);
+                        const doctorName = patientDoctor.split('(')[0].trim();
+                        successMsg.textContent = `Thank you, ${patientName}! Your consultation request for ${doctorName} on ${patientDate} (${shortSlot}) has been sent to our WhatsApp (+91 94480 46136). Our team will confirm shortly.`;
                     }
                     successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }
@@ -380,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         c.classList.remove('active');
                     }
                 });
-            }, 900);
+            }, 600);
         });
     }
 
@@ -501,6 +550,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = heroCarousel.querySelectorAll('.hero-dot');
         const prevBtn = document.getElementById('hero-carousel-prev');
         const nextBtn = document.getElementById('hero-carousel-next');
+        const dotsContainer = document.getElementById('hero-carousel-dots');
+
+        if (slides.length <= 1) {
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+            if (dotsContainer) dotsContainer.style.display = 'none';
+            return;
+        }
+
         let currentSlide = 0;
         let carouselInterval = null;
         const autoDelay = 4200; // 4.2 seconds smooth auto transition

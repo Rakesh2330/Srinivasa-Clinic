@@ -37,7 +37,7 @@
         /* Hero Banner */
         .about-hero {
             background: linear-gradient(135deg, #1E2D56 0%, #2A3E75 60%, #3B82F6 100%);
-            padding: 160px 0 80px;
+            padding: 55px 0 80px;
             position: relative;
             overflow: hidden;
         }
@@ -485,7 +485,7 @@
         /* ── Clinic Gallery ── */
         .clinic-gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 28px;
         }
 
@@ -621,7 +621,7 @@
 
         @media (max-width: 600px) {
             .about-hero {
-                padding: 130px 0 70px;
+                padding: 30px 0 60px;
             }
 
             .about-hero-img-wrap img {
@@ -660,33 +660,20 @@
             .clinic-gallery-img-wrap {
                 height: 220px;
             }
-
-            .doctor-switcher {
-                max-width: 100%;
-                gap: 6px;
-                padding: 4px;
-            }
-
-            .switcher-btn {
-                padding: 9px 12px;
-                font-size: 0.82rem;
-                gap: 6px;
-            }
         }
 
         /* ── Doctor Switcher Styles ── */
         .doctor-switcher-wrap {
             background: #F8FAFC;
-            padding: 20px 0;
+            padding: 16px 0;
             border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 58px;
-            margin-top: 98px;
-            z-index: 100;
+            position: relative;
+            margin-top: 106px;
+            z-index: 10;
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
         }
-        
+
         [data-theme="dark"] .doctor-switcher-wrap {
             background: #0F172A;
             border-color: #334155;
@@ -763,6 +750,141 @@
         .doctor-profile-vatsala {
             display: none;
         }
+
+        /* ── Mobile View Proportional Refinements (<= 768px & <= 480px) ── */
+        @media (max-width: 768px) {
+            .doctor-switcher-wrap {
+                margin-top: 96px;
+                padding: 12px 0;
+                position: relative;
+                top: auto;
+            }
+
+            .doctor-switcher {
+                max-width: 340px;
+                padding: 4px;
+                gap: 5px;
+                border-radius: 35px;
+            }
+
+            .switcher-btn {
+                padding: 8px 12px;
+                font-size: 0.82rem;
+                gap: 6px;
+                white-space: nowrap;
+                border-radius: 25px;
+            }
+
+            .switcher-btn i {
+                font-size: 0.84rem;
+            }
+
+            .about-hero {
+                padding: 28px 0 50px;
+            }
+
+            .about-hero-img-wrap img {
+                width: 185px;
+                height: 220px;
+                border-radius: 20px;
+                border-width: 4px;
+            }
+
+            .about-hero-text h1 {
+                font-size: 1.65rem;
+                line-height: 1.2;
+                margin-top: 4px;
+                margin-bottom: 6px;
+            }
+
+            .about-hero-text .subtitle {
+                font-size: 0.86rem;
+                line-height: 1.45;
+                margin-bottom: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .doctor-switcher-wrap {
+                margin-top: 92px;
+                padding: 10px 0;
+            }
+
+            .doctor-switcher {
+                max-width: 310px;
+                padding: 3px;
+                gap: 4px;
+                border-radius: 30px;
+            }
+
+            .switcher-btn {
+                padding: 7px 10px;
+                font-size: 0.76rem;
+                gap: 5px;
+                white-space: nowrap;
+                border-radius: 25px;
+            }
+
+            .switcher-btn i {
+                font-size: 0.78rem;
+            }
+
+            .about-hero {
+                padding: 22px 0 45px;
+            }
+
+            .about-hero-img-wrap img {
+                width: 170px;
+                height: 200px;
+                border-radius: 18px;
+            }
+
+            .reg-badge {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+                bottom: -10px;
+            }
+
+            .section-tag {
+                font-size: 0.72rem;
+            }
+
+            .about-hero-text h1 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+                margin-top: 3px;
+                margin-bottom: 5px;
+                letter-spacing: -0.3px;
+            }
+
+            .about-hero-text .subtitle {
+                font-size: 0.82rem;
+                line-height: 1.42;
+                margin-bottom: 16px;
+            }
+
+            .about-hero-chips {
+                gap: 6px;
+                margin-bottom: 18px;
+            }
+
+            .hero-chip {
+                font-size: 0.72rem;
+                padding: 4px 10px;
+            }
+
+            .about-hero-stats {
+                gap: 16px;
+            }
+
+            .ah-stat-num {
+                font-size: 1.35rem;
+            }
+
+            .ah-stat-lbl {
+                font-size: 0.68rem;
+            }
+        }
     </style>
 </head>
 
@@ -807,9 +929,9 @@
                     <span id="opd-status-text">Morning OPD Active Now | Kuvempunagar (Until 1:00 PM)</span>
                 </div>
                 <div class="topbar-right">
-                    <a href="tel:+919448046136" class="topbar-link">
+                    <a href="tel:08212546136" class="topbar-link">
                         <i class="fa-solid fa-phone"></i>
-                        <span>+91 94480 46136</span>
+                        <span>0821&nbsp;2546136</span>
                     </a>
                     <a href="mailto:sheshadripp@gmail.com" class="topbar-link">
                         <i class="fa-solid fa-envelope"></i>
@@ -850,7 +972,7 @@
                     <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
                         <i class="fa-solid fa-moon"></i>
                     </button>
-                    <a href="tel:+919448046136" class="btn-call-now">
+                    <a href="tel:08212546136" class="btn-call-now">
                         <i class="fa-solid fa-phone"></i>
                         <span>Call Now</span>
                     </a>
@@ -1066,31 +1188,63 @@
                 </p>
             </div>
             <div class="clinic-gallery-grid">
+                <!-- Card 1: Treatment Room 1 -->
                 <div class="clinic-gallery-card scale-up delay-1">
                     <div class="clinic-gallery-img-wrap">
-                        <img src="assets/hero2.png" alt="Dental Treatment Room – Srinivasa Dental Clinic">
+                        <img src="assets/herooooo.png" alt="Treatment Room 1 – Srinivasa Dental Clinic">
                         <div class="clinic-gallery-overlay">
                             <i class="fa-solid fa-tooth"></i>
-                            <span>Treatment Room</span>
+                            <span>Treatment Room 1</span>
                         </div>
                     </div>
                     <div class="clinic-gallery-caption">
-                        <h4>Modern Treatment Room</h4>
+                        <h4>Treatment Room 1</h4>
                         <p>Equipped with advanced dental chairs, sterilisation units and digital diagnostic tools.</p>
                     </div>
                 </div>
+
+                <!-- Card 2: Treatment Room 2 / X-Ray Room -->
                 <div class="clinic-gallery-card scale-up delay-2">
                     <div class="clinic-gallery-img-wrap">
-                        <img src="assets/hero3.png" alt="Consultation Room – Srinivasa Dental Clinic">
+                        <img src="assets/hero3.png" alt="Treatment Room 2 / X-Ray Room – Srinivasa Dental Clinic">
                         <div class="clinic-gallery-overlay">
-                            <i class="fa-solid fa-user-doctor"></i>
-                            <span>Consultation &amp; X-Ray Room</span>
+                            <i class="fa-solid fa-x-ray"></i>
+                            <span>Treatment Room 2 / X-Ray Room</span>
                         </div>
                     </div>
                     <div class="clinic-gallery-caption">
-                        <h4>Consultation &amp; X-Ray Room</h4>
-                        <p>Digital X-ray and consultation setup for accurate diagnosis and personalised treatment
-                            planning.</p>
+                        <h4>Treatment Room 2 / X-Ray Room</h4>
+                        <p>Digital X-ray and consultation setup for accurate diagnosis and personalised treatment planning.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Modern Operatory Suite -->
+                <div class="clinic-gallery-card scale-up delay-3">
+                    <div class="clinic-gallery-img-wrap">
+                        <img src="assets/herooo.png" alt="Advanced Treatment Operatory Suite">
+                        <div class="clinic-gallery-overlay">
+                            <i class="fa-solid fa-chair"></i>
+                            <span>Treatment Operatory 2</span>
+                        </div>
+                    </div>
+                    <div class="clinic-gallery-caption">
+                        <h4>Treatment Operatory 2</h4>
+                        <p>Ergonomic hydraulic dental operatory unit designed for surgical comfort and micro-precision procedures.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Digital RVG & Diagnostics -->
+                <div class="clinic-gallery-card scale-up delay-4">
+                    <div class="clinic-gallery-img-wrap">
+                        <img src="assets/hero-bg.png" alt="Digital RVG Chairside Diagnostic Equipment">
+                        <div class="clinic-gallery-overlay">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Digital RVG Suite</span>
+                        </div>
+                    </div>
+                    <div class="clinic-gallery-caption">
+                        <h4>Digital RVG Suite</h4>
+                        <p>Low-radiation computerized digital radiography delivering instant high-definition chairside imaging.</p>
                     </div>
                 </div>
             </div>
@@ -1393,8 +1547,8 @@
             </p>
             
             <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                <a href="tel:+919448046136" class="btn" style="background: #3B82F6; color: #fff; padding: 16px 40px; border-radius: 50px; font-size: 1.05rem; font-weight: 700; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">
-                    <i class="fa-solid fa-phone"></i> +91 9448046136
+                <a href="tel:08212546136" class="btn" style="background: #3B82F6; color: #fff; padding: 16px 40px; border-radius: 50px; font-size: 1.05rem; font-weight: 700; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">
+                    <i class="fa-solid fa-phone"></i> 0821 2546136
                 </a>
             </div>
         </div>
@@ -1414,7 +1568,7 @@
                     <p class="footer-desc">Speciality centre for digital dental implants, laser periodontics, and complete smile care with 33+ years of clinical excellence in Kuvempunagar, Mysuru.</p>
                     <div class="social-links">
                         <a href="https://wa.me/919448046136" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="tel:+919448046136" aria-label="Call Clinic"><i class="fa-solid fa-phone"></i></a>
+                        <a href="tel:08212546136" aria-label="Call Clinic"><i class="fa-solid fa-phone"></i></a>
                         <a href="https://maps.google.com/?q=Srinivasa+Dental+Clinic+Kuvempunagar+Mysuru+851+Panchamantra+Road" target="_blank" rel="noopener" aria-label="Google Maps"><i class="fa-solid fa-location-dot"></i></a>
                         <a href="mailto:sheshadripp@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                     </div>
@@ -1442,7 +1596,7 @@
                         </div>
                         <div class="f-contact-item">
                             <i class="fa-solid fa-phone"></i>
-                            <a href="tel:+919448046136" class="fc-val fc-link">+91 94480 46136</a>
+                            <a href="tel:08212546136" class="fc-val fc-link">0821 2546136</a>
                         </div>
                         <div class="f-contact-item">
                             <i class="fa-regular fa-clock"></i>
@@ -1468,7 +1622,7 @@
 
     <!-- Mobile Sticky Quick-Action Bar (Phone View Only) -->
     <aside class="mobile-bottom-bar" aria-label="Mobile Quick Actions">
-        <a href="tel:+919448046136" class="mob-bar-btn mob-bar-call" aria-label="Call Doctor">
+        <a href="tel:08212546136" class="mob-bar-btn mob-bar-call" aria-label="Call Doctor">
             <i class="fa-solid fa-phone"></i>
             <span>Call OPD</span>
         </a>
