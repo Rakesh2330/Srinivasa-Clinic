@@ -23,6 +23,12 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+section[id],
+div[id] {
+    scroll-margin-top: 85px;
 }
 
 body {
@@ -599,7 +605,7 @@ h2 {
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(17, 29, 61, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.35);
     background: #0f172a;
-    aspect-ratio: 4 / 3.15;
+    aspect-ratio: 4 / 3;
     width: 100%;
     max-width: 580px;
     margin: 0 auto;
@@ -646,8 +652,25 @@ h2 {
     z-index: 2;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     display: block;
+}
+
+.hero-slide:nth-child(1) img {
+    object-position: center top;
+}
+
+.hero-slide:nth-child(2) img {
+    object-position: center 30%;
+}
+
+.hero-slide:nth-child(3) img {
+    object-position: center center;
+}
+
+.hero-slide:nth-child(4) img {
+    object-position: center 35%;
 }
 
 /* Subtle gradient at bottom for badge contrast */
@@ -2182,6 +2205,15 @@ body.mobile-menu-open {
 }
 
 @media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+
+    section[id],
+    div[id] {
+        scroll-margin-top: 70px;
+    }
+
     body {
         padding-bottom: 58px; /* Room for floating quick-action bottom bar */
     }
@@ -2456,14 +2488,107 @@ body.mobile-menu-open {
     }
 
     /* About Section */
+    .about-section {
+        padding: 42px 0;
+    }
+
     .about-container {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 24px;
     }
 
     .about-image {
         max-width: 440px;
+        width: 100%;
         margin: 0 auto;
+        position: relative;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 22px;
+        box-shadow: 0 10px 25px rgba(17, 29, 61, 0.12);
+        display: block;
+    }
+
+    .experience-badge {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: -22px auto 0;
+        width: fit-content;
+        max-width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 8px 22px;
+        border-radius: 30px;
+        background: var(--primary);
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        box-shadow: 0 8px 24px rgba(17, 29, 61, 0.28);
+        z-index: 2;
+    }
+
+    .experience-badge .years {
+        font-size: 1.55rem;
+        font-weight: 700;
+        line-height: 1;
+        display: block;
+    }
+
+    .experience-badge .text {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    .about-text h2 {
+        font-size: 1.65rem;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+
+    .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.55;
+        margin-bottom: 16px;
+    }
+
+    .clinic-features {
+        margin: 16px 0 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .clinic-features li {
+        font-size: 0.88rem;
+        gap: 11px;
+        margin-bottom: 0;
+        line-height: 1.4;
+    }
+
+    .clinic-features li i {
+        color: #10B981;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+    }
+
+    .about-text .btn {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.92rem;
     }
 
     /* FAQ Section */
@@ -2620,28 +2745,22 @@ body.mobile-menu-open {
         line-height: 1.25;
     }
 
+    .about-image img {
+        height: 205px;
+    }
+
     .experience-badge {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin: -25px auto 0;
-        max-width: 250px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 14px;
-        padding: 12px 20px;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(30, 45, 86, 0.35);
+        margin: -20px auto 0;
+        padding: 7px 18px;
+        gap: 10px;
     }
 
     .experience-badge .years {
-        font-size: 1.85rem;
+        font-size: 1.4rem;
     }
 
     .experience-badge .text {
-        font-size: 0.75rem;
-        text-align: left;
+        font-size: 0.68rem;
     }
 }
 
@@ -3164,8 +3283,8 @@ body.mobile-menu-open {
 
 .reviews-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
 }
 
 .review-card {
@@ -3174,7 +3293,7 @@ body.mobile-menu-open {
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(226, 232, 240, 0.9);
     border-radius: 20px;
-    padding: 32px;
+    padding: 30px 26px;
     box-shadow: 0 10px 30px rgba(34, 58, 118, 0.06);
     display: flex;
     flex-direction: column;
@@ -3189,26 +3308,78 @@ body.mobile-menu-open {
     background: #ffffff;
 }
 
+.review-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
 .review-stars {
     color: #F59E0B;
     font-size: 0.95rem;
-    margin-bottom: 15px;
     display: flex;
     gap: 3px;
+    margin-bottom: 0;
+}
+
+.review-source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #1A73E8;
+    background: rgba(26, 115, 232, 0.08);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(26, 115, 232, 0.2);
+}
+
+.review-source-badge i {
+    font-size: 0.82rem;
 }
 
 .review-text {
     font-style: italic;
     color: var(--text-dark);
     line-height: 1.7;
-    margin-bottom: 20px;
-    font-size: 0.96rem;
+    margin-bottom: 18px;
+    font-size: 0.94rem;
+    flex-grow: 1;
+}
+
+.review-owner-reply {
+    background: rgba(30, 45, 86, 0.04);
+    border-left: 3px solid #3B82F6;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.owner-reply-title {
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+    font-size: 0.78rem;
+}
+
+.review-owner-reply p {
+    color: var(--text-muted);
+    margin: 0;
+    font-style: italic;
 }
 
 .review-author {
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-top: auto;
 }
 
 .author-avatar {
@@ -3221,21 +3392,75 @@ body.mobile-menu-open {
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .author-name {
     font-weight: 700;
     color: var(--logo-blue-dark);
     font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease;
+}
+
+.author-name:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.author-name i {
+    font-size: 0.7rem;
+    opacity: 0.65;
 }
 
 .author-badge {
-    font-size: 0.78rem;
-    color: #10B981;
+    font-size: 0.75rem;
+    color: #059669;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .review-source-badge {
+    color: #60A5FA;
+    background: rgba(96, 165, 250, 0.12);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] .review-owner-reply {
+    background: rgba(30, 45, 86, 0.35);
+    border-left-color: #60A5FA;
+}
+
+[data-theme="dark"] .owner-reply-title {
+    color: #93C5FD;
+}
+
+[data-theme="dark"] .review-owner-reply p {
+    color: #CBD5E1;
+}
+
+[data-theme="dark"] .author-name {
+    color: #F1F5F9;
+}
+
+[data-theme="dark"] .author-name:hover {
+    color: #60A5FA;
+}
+
+[data-theme="dark"] .author-badge {
+    color: #34D399;
 }
 
 /* 4. FAQ Section */
@@ -4113,6 +4338,73 @@ header, section, footer, .doctor-switcher-wrap {
         height: 36px;
         max-width: 90px;
     }
+
+    /* About Section Phone Refinements */
+    .about-section {
+        padding: 34px 0;
+    }
+
+    .about-container {
+        gap: 18px;
+    }
+
+    .about-image {
+        max-width: 100%;
+        padding: 0 4px;
+    }
+
+    .about-image img {
+        height: 190px;
+        border-radius: 18px;
+    }
+
+    .experience-badge {
+        margin: -18px auto 0;
+        padding: 6px 16px;
+        gap: 10px;
+        border-radius: 25px;
+    }
+
+    .experience-badge .years {
+        font-size: 1.3rem;
+    }
+
+    .experience-badge .text {
+        font-size: 0.66rem;
+        line-height: 1.15;
+    }
+
+    .about-text h2 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+        margin-bottom: 10px;
+    }
+
+    .about-text p {
+        font-size: 0.84rem;
+        line-height: 1.5;
+        margin-bottom: 14px;
+    }
+
+    .clinic-features {
+        margin: 14px 0 18px;
+        gap: 10px;
+    }
+
+    .clinic-features li {
+        font-size: 0.82rem;
+        gap: 10px;
+    }
+
+    .clinic-features li i {
+        font-size: 0.88rem;
+    }
+
+    .about-text .btn {
+        max-width: 100%;
+        font-size: 0.88rem;
+        padding: 11px 18px;
+    }
 }
 
 /* Very Small Phones (<= 360px) */
@@ -4127,6 +4419,27 @@ header, section, footer, .doctor-switcher-wrap {
 
     .stat-label {
         font-size: 0.65rem;
+    }
+
+    .about-image img {
+        height: 170px;
+    }
+
+    .experience-badge {
+        padding: 5px 12px;
+        gap: 8px;
+    }
+
+    .experience-badge .years {
+        font-size: 1.2rem;
+    }
+
+    .experience-badge .text {
+        font-size: 0.62rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.32rem;
     }
 
     .navbar-actions {
@@ -4153,6 +4466,13 @@ header, section, footer, .doctor-switcher-wrap {
         width: 33px;
         height: 33px;
     }
+}
+
+/* Dark mode badge enhancement */
+[data-theme="dark"] .experience-badge {
+    background: #1E293B;
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 
